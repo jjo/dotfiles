@@ -1,0 +1,3 @@
+#jjo: nice hack to cmdline usability =)
+"\e[A": history-search-backward
+"\e[B": history-search-forward
