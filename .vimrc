@@ -18,3 +18,11 @@ autocmd BufRead,BufNewFile *.txt,README,TODO,CHANGELOG,NOTES
         \ comments=s1:/*,ex:*/,://,b:#,:%,:XCOMM,fb:-,fb:*,fb:+,fb:.,fb:>
 
 set bg=dark
+
+" switched myself to gnu indentation (flames>/dev/null :P)
+function! GnuIndent()
+  setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+  setlocal shiftwidth=2
+  setlocal tabstop=8
+endfunction
+au FileType c,cpp call GnuIndent() 
