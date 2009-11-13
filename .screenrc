@@ -1,11 +1,18 @@
 ## tip: LANG=en_US screen -RAd  , screen con encoding: UTF-8, terminales con LANG=en_US.UTF-8
 caption always
-caption string "%w | %H | %C%a %d/%m/%Y"
+#caption string "%w | %H | %C%a %d/%m/%Y"
+#hardstatus alwayslastline "%-Lw%{= BK}%50>%n%f* %t %u%{-}%+Lw%<" # didier
+caption string "%-Lw%{= gK}%50>%n%f* %t %u%{-}%+Lw%<| %H | %C%a %d/%m/%Y"
 setenv SSH_AUTH_SOCK $HOME/.ssh/ssh-agent-${HOSTNAME}.sock
 unsetenv SESSION_MANAGER # ... else some X11 apps (notably ooffice) from launched screen loop trying to contact session manager
 
 bell_msg "^G beeep en window %n ^G"
 hardstatus off
+##jjo 29-Dec-2008: IBM TP-like keyboard keys (2 above cursors)
+bindkey -t "\033O3C" stuff "\033OC"
+bindkey -t "\033O3D" stuff "\033OD"
+#bindkey -t "\033[3C" stuff "\033OC"
+#bindkey -t "\033[3D" stuff "\033OD"
 ##jjo 17-Nov-2007:  map khome and kend in gnome-terminal to screen
 bindkey -t "\033OH" stuff "\033[1~"
 bindkey -t "\033OF" stuff "\033[4~"
