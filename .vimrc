@@ -24,7 +24,7 @@ au FileType arduino call ArduinoSetup()
 filetype plugin indent on
 "autocmd FileType python compiler pylint
 
-au BufRead,BufNewFile *.txt,README,TODO,CHANGELOG,NOTES
+au BufRead,BufNewFile *.txt,README*,TODO*,CHANGELOG,NOTES
         \ setlocal autoindent expandtab tabstop=8 softtabstop=2 shiftwidth=2 filetype=asciidoc
         \ textwidth=70 wrap formatoptions=tcqn
         \ formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*<\\d\\+>\\s\\+\\\\|^\\s*[a-zA-Z.]\\.\\s\\+\\\\|^\\s*[ivxIVX]\\+\\.\\s\\+
