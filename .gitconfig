@@ -1,6 +1,7 @@
 [user]
 	name = JuanJo Ciarlante
-	email = juanjosec@gmail.com
+	#email = juanjosec@gmail.com
+	email = jjo+ml@google.com
 [merge]
 	tool = vimdiff
 [core]

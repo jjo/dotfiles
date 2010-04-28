@@ -42,7 +42,11 @@ au FileType c,cpp,arduino call GnuIndent()
 " GO (golang.org)
 "   cp $GOROOT/misc/vim/go.vim ~/.vim/syntax
 au BufRead,BufNewFile *.go setf go
-  \ ts=8 et sts=2 sw=2 ai
+  \ ts=2 et sts=2 sw=2 ai
+
+
+au BufRead,BufNewFile *.proto setf cpp
+  \ ts=2 et sts=2 sw=2 ai
 
 " avoid autoindent when pasting w/middle click
 set bg=dark
