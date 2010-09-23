@@ -7,9 +7,14 @@
 [core]
 	editor = vim
 [alias]
+	whe = log -1 --pretty=oneline 
 	last = log -1 HEAD
 	co = checkout
 	st = status
 	br = branch
 	ci = commit
 	unstage = reset HEAD --
+[color]
+	ui = true
+[rietveld]
+	server = codereview.appspot.com
