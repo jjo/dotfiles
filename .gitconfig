@@ -1,15 +1,17 @@
+[merge]
+    tool = vimdiff
+[core]
+    editor = vim
+[alias]
+    whe = log -1 --pretty=oneline 
+    last = log -1 HEAD
+    co = checkout
+    st = status
+    br = branch
+    ci = commit
+    unstage = reset HEAD --
+[color]
+    ui = true
 [user]
 	name = JuanJo Ciarlante
-	#email = juanjosec@gmail.com
-	email = jjo+ml@google.com
-[merge]
-	tool = vimdiff
-[core]
-	editor = vim
-[alias]
-	last = log -1 HEAD
-	co = checkout
-	st = status
-	br = branch
-	ci = commit
-	unstage = reset HEAD --
+	email = jjo@google.com
