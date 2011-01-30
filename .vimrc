@@ -48,6 +48,12 @@ au BufRead,BufNewFile *.go setf go
 au BufRead,BufNewFile *.proto setf cpp
   \ ts=2 et sts=2 sw=2 ai
 
+" java/android
+"
+
+au BufRead,BufNewFile build.xml,*.java
+  \ set makeprg=ant\ -emacs
+
 " avoid autoindent when pasting w/middle click
 set bg=dark
 set mouse=a
