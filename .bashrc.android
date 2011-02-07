@@ -1,0 +1,7 @@
+ANDROID_ROOT=~/src/android-sdk-linux_x86
+# android create avd -n my_android2.2 -t android-8
+# emulator -avd my_android2.2
+alias  android=$ANDROID_ROOT/tools/android
+alias     aapt=$ANDROID_ROOT/platforms/android-8/tools/aapt
+alias emulator=$ANDROID_ROOT/tools/emulator
+alias      adb=$ANDROID_ROOT/platform-tools/adb
