@@ -1,4 +1,5 @@
 syntax on
+set modeline
 imap <F2> :r !date +[\%T]o
 map <F2> :r !date +[\%T]
 map <F8> :new<CR>:read !cg-diff<CR>:set syntax=diff buftype=nofile<CR>gg
