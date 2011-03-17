@@ -1,0 +1,1 @@
+alias dless='~/bin/colordiff | /usr/bin/less -R'
