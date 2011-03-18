@@ -41,12 +41,12 @@ endfunction
 au FileType c,cpp,arduino call GnuIndent() 
 
 " GO (golang.org)
-"   cp $GOROOT/misc/vim/go.vim ~/.vim/syntax
-au BufRead,BufNewFile *.go setf go
+"   cp $GOROOT/misc/vim/{ftdetect,syntax} ~/.vim/
+au BufRead,BufNewFile *.go set filetype=go
   \ ts=2 et sts=2 sw=2 ai
 
 
-au BufRead,BufNewFile *.proto setf cpp
+au BufRead,BufNewFile *.proto set filetype=cpp
   \ ts=2 et sts=2 sw=2 ai
 
 " java/android
@@ -63,10 +63,10 @@ if has("cscope")
   set nocsverb
   " add any database in current directory
   if filereadable("cscope.out")
-      cs add cscope.out
-  " else add database pointed to by environment
+    cs add cscope.out
+    " else add database pointed to by environment
   elseif $CSCOPE_DB != ""
-      cs add $CSCOPE_DB
+    cs add $CSCOPE_DB
   endif
   set csverb
   map g<C-]> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
