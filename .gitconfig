@@ -1,0 +1,14 @@
+[user]
+	name = JuanJo Ciarlante
+	email = juanjosec@gmail.com
+[merge]
+	tool = vimdiff
+[core]
+	editor = vim
+[alias]
+	last = log -1 HEAD
+	co = checkout
+	st = status
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
