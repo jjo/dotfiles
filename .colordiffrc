@@ -1,0 +1,16 @@
+# Example colordiffrc file for dark backgrounds
+#
+# Set banner=no to suppress authorship info at top of
+# colordiff output
+banner=no
+# 
+# available colours are: white, yellow, green, blue,
+#                        cyan, red, magenta, black,
+#                        darkwhite, darkyellow, darkgreen,
+#                        darkblue, darkcyan, darkred,
+#                        darkmagenta, darkblack
+#
+plain=white
+newtext=green
+oldtext=red
+diffstuff=magenta
