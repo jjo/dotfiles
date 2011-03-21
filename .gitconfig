@@ -12,3 +12,5 @@
 	br = branch
 	ci = commit
 	unstage = reset HEAD --
+[color]
+	ui = always
