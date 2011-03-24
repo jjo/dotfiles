@@ -1,4 +1,7 @@
 % ~/.mutt/jed.mutt.sl
+% fsCKing menu keys:
+unsetkey("^[F");
+unsetkey("^[B");
 % emacs keybinding for jed:
 () = evalfile("emacs");  
 % Find signature begin, position cursor there:
