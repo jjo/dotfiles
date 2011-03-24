@@ -12,5 +12,6 @@
 	br = branch
 	ci = commit
 	unstage = reset HEAD --
+	ls = ls-files -v --stage --abbrev=8
 [color]
 	ui = auto
