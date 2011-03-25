@@ -1,6 +1,6 @@
 ## ~/.mutt/muttrc
 set from=juanjosec@gmail.com
-set realname="JuanJo"
+set realname="JuanJo Ciarlante"
 set reverse_name=yes
 set reverse_realname=no
 set imap_user = 'juanjosec@gmail.com'
@@ -21,7 +21,7 @@ set edit_hdrs
 set include
 set reply_to
 set abort_nosubject=no
-alternates '(username|altusername)([-+].*)?@.*'
+alternates '(juanjosec|jjo)([-+].*)?@.*'
 set hdr_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s" # format of the index
 
 hdr_order From: Date: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
@@ -36,7 +36,7 @@ set editor="jed %s -l ~/.mutt/jed.mutt.sl"
 set alias_file=~/.mutt/mail_aliases
 source ~/.mutt/mail_aliases
 
-send-hook . 'set realname="JuanJo"'
+send-hook . 'set realname="JuanJo Ciarlante"'
 ## hack to make  $reverse_name and 'my_hdr From:' work ok (eg mlists)
 send-hook . 'set from=juanjosec@gmail.com'
 send-hook . 'unmy_hdr From:'
