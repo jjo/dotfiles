@@ -30,7 +30,7 @@ unignore From: Date: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
 my_hdr Reply-To:
 
 # setup gmail filters to apply the corresp. labels:
-mailboxes ! =01-todo =02-wait4 =10-to_me =12-inbox2 =13-inbox3 =[Gmail]/Drafts "=[Gmail]/All Mail"
+mailboxes ! "=[Gmail]/Important" =01-todo =02-wait4 =10-to_me =12-inbox2 =13-inbox3 =[Gmail]/Drafts "=[Gmail]/All Mail"
 
 set editor="jed %s -l ~/.mutt/jed.mutt.sl"
 set alias_file=~/.mutt/mail_aliases
