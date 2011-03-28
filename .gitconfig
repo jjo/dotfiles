@@ -13,5 +13,6 @@
 	ci = commit
 	unstage = reset HEAD --
 	ls = ls-files -v --stage --abbrev=8
+	glog = log --pretty=oneline --graph --all
 [color]
 	ui = auto
