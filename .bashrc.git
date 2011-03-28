@@ -3,14 +3,16 @@
 #   username@Machine ~/dev/dir[master]$   # clean working directory
 #   username@Machine ~/dev/dir[master*]$  # dirty working directory
 
-function parse_git_dirty {
-  case "$(git status 2> /dev/null)" in
-    *nothing?to?commit*clean*|*nothing?added*commit?but?untracked?files*);;
-    *) echo '*';;
-  esac
-}
 function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+  typeset line branch="" status="*"
+  while read line ;do
+    case "$line" in
+	    "# On branch "*) branch=${line#*On?branch?};;
+	    *nothing?to?commit*clean*|*nothing?added*commit?but?untracked?files*) status="";;
+    esac
+  done < <(git status)
+  echo ${branch:+[${branch}$status]}
+
 }
 test -r /etc/bash_completion.d/git && . /etc/bash_completion.d/git
 export PS1='\u@\h \[\033[1;33m\]\w\[\033[0m\]$(parse_git_branch)$ '
