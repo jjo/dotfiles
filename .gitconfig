@@ -14,7 +14,7 @@
 	unstage = reset HEAD --
 	ls = ls-files -v --stage --abbrev=8
 	log-graph = log --pretty=oneline --graph --all
-	log-grep = !git log -p -m -S "$1"
+	log-grep = !sh -c 'git log -p -m --pickaxe-regex -S$1 $2' -
 
 [color]
 	ui = auto
