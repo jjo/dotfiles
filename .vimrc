@@ -49,6 +49,9 @@ au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.proto set filetype=cpp
   \ ts=2 et sts=2 sw=2 ai
 
+au BufRead,BufNewFile *.szl set filetype=szl
+  \ ts=2 et sts=2 sw=2 ai
+
 " java/android
 "
 
