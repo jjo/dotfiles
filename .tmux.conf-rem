@@ -1,0 +1,40 @@
+## UNDO jjo's .tmux.conf, useful for remote tmux'es inside tmux
+unbind-key C-b
+set-option -g prefix C-b
+# Bindings:
+unbind-key C-t
+unbind-key t
+# handy for changing to: prefix C-x
+unbind-key C-x
+unbind-key x
+# kinda screen's redisplay (redraw window):
+# just make display something :)
+unbind-key l
+unbind-key C-l
+# alt redisplay:
+#bind-key l confirm-before select-layout
+#bind-key C-l confirm-before select-layout
+#
+unbind-key -
+unbind-key |
+unbind-key /
+# screen'isms:
+unbind-key C-c
+unbind-key K
+# map Alt-N to  select-window -t N
+unbind-key -n M-0
+unbind-key -n M-1
+unbind-key -n M-2
+unbind-key -n M-3
+unbind-key -n M-4
+unbind-key -n M-5
+unbind-key -n M-6
+unbind-key -n M-7
+unbind-key -n M-8
+unbind-key -n M-9
+unbind-key -n M--
+unbind-key -n M-,
+unbind r
+# status-es
+set-option -g status off
+#
