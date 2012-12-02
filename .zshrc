@@ -1135,7 +1135,7 @@ zstyle ':vcs_info:*' max-exports 2
 # % vcs_info_printsys
 # # list of supported version control backends:
 # # disabled systems are prefixed by a hash sign (#)
-# git
+git
 # hg
 # bzr
 # darcs

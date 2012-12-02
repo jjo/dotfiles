@@ -34,3 +34,4 @@ Red                  red b     \b([A-Z]{1,4}[# ][1-9][0-9]*)\b
 Cyan                 cya b     ([#][a-z][a-z0-9_-]+)
 # very simple urls
 Red                  red b     ((mailto:|(news|(ht|f)tp(s?))://)[^ ]+)
+Red                  red b     ^(\w+@\w+)\b

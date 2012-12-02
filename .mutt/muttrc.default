@@ -32,7 +32,8 @@ my_hdr Reply-To:
 # setup gmail filters to apply the corresp. labels:
 mailboxes ! "=[Gmail]/Important" =01-todo =02-wait4 =10-to_me =12-inbox2 =13-inbox3 =[Gmail]/Drafts "=[Gmail]/All Mail"
 
-set editor="jed %s -l ~/.mutt/jed.mutt.sl"
+#set editor="jed %s -l ~/.mutt/jed.mutt.sl"
+set editor="vim %s"
 set alias_file=~/.mutt/mail_aliases
 source ~/.mutt/mail_aliases
 

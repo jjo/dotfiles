@@ -11,6 +11,7 @@
 	st = status
 	br = branch
 	ci = commit
+	di = diff
 	unstage = reset HEAD --
 	ls = ls-files -v --stage --abbrev=8
 	log-graph = log --pretty=oneline --graph --all

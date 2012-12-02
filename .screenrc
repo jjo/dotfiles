@@ -10,7 +10,7 @@ caption always
 #caption string "%w | %H | %C%a %d/%m/%Y"
 #hardstatus alwayslastline "%-Lw%{= BK}%50>%n%f* %t %u%{-}%+Lw%<" # didier
 caption string "%-Lw%{= gK}%50>%n%f* %t %u%{-}%+Lw%<| %H | %C%a %d/%m/%Y"
-setenv SSH_AUTH_SOCK $HOME/.ssh/ssh-agent-${HOSTNAME}.sock
+#setenv SSH_AUTH_SOCK $HOME/.ssh/ssh-agent-${HOSTNAME}.sock
 unsetenv SESSION_MANAGER # ... else some X11 apps (notably ooffice) from launched screen loop trying to contact session manager
 
 bell_msg "^G beeep en window %n ^G"
@@ -28,6 +28,7 @@ bindkey -t ^th hardcopy
 bindkey -t ^t^h bindkey -k kb stuff ^?
 bindkey -t ^t^? bindkey -k kb stuff ^h
 bindkey "\033," copy
+#Alt-N for quick switch
 bindkey "\0330" select 0
 bindkey "\0331" select 1
 bindkey "\0332" select 2
@@ -38,7 +39,12 @@ bindkey "\0336" select 6
 bindkey "\0337" select 7
 bindkey "\0338" select 8
 bindkey "\0339" select 9
+#Swap w/prev screen:
 bindkey "\033-" other
+#Alt-n/p for next/prev screen
+bindkey "\033n" next
+bindkey "\033p" prev
+
 escape ^tt
 bindkey "\033'a" digraph "'a"
 bindkey "\033'e" digraph "'e"

@@ -24,7 +24,7 @@ endfunction
 au FileType arduino call ArduinoSetup()
 filetype plugin indent on
 
-autocmd FileType python compiler pylint
+"autocmd FileType python compiler pylint
 autocmd FileType python set ts=2 et sts=2 sw=2 ai
 
 au BufRead,BufNewFile *.txt,README*,TODO*,CHANGELOG,NOTES
