@@ -13,6 +13,9 @@ caption string "%-Lw%{= gK}%50>%n%f* %t %u%{-}%+Lw%<| %H | %C%a %d/%m/%Y"
 #setenv SSH_AUTH_SOCK $HOME/.ssh/ssh-agent-${HOSTNAME}.sock
 unsetenv SESSION_MANAGER # ... else some X11 apps (notably ooffice) from launched screen loop trying to contact session manager
 
+##jjo 28-Feb-2013: shorter timeout
+#maptimeout 10
+
 bell_msg "^G beeep en window %n ^G"
 hardstatus off
 ##jjo 29-Dec-2008: IBM TP-like keyboard keys (2 above cursors)
@@ -42,8 +45,8 @@ bindkey "\0339" select 9
 #Swap w/prev screen:
 bindkey "\033-" other
 #Alt-n/p for next/prev screen
-bindkey "\033n" next
-bindkey "\033p" prev
+bindkey "\033j" next
+bindkey "\033k" prev
 
 escape ^tt
 bindkey "\033'a" digraph "'a"
