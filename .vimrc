@@ -1,3 +1,7 @@
+" Highlight >80cols
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
 syntax on
 set modeline
 imap <F2> :r !date +[\%T]o
