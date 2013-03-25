@@ -1,6 +1,24 @@
-" Highlight >80cols
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" Highlight >80cols, extra space, and others
+highlight ExtraSpace ctermbg=grey ctermfg=white guibg=#707070
+au BufWinEnter * let w:m1=matchadd('ExtraSpace', ' \+$', -1)
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+\|XXX\|TODO.jjo.', -1)
+" https://github.com/klen/python-mode#how-to-install
+" Pathogen load
+filetype off
+
+call pathogen#infect()
+call pathogen#helptags()
+let g:pymode_lint_checker = "pyflakes,pep8,mccabe,pylint"
+
+filetype plugin indent on
+syntax on
+
+" pythonisms
+"filetype plugin indent on
+"autocmd FileType python compiler pylint
+"autocmd FileType lua,puppet,python set sw=4 ts=4 sts=4 et ai smarttab
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+
 
 syntax on
 set modeline
@@ -28,8 +46,6 @@ endfunction
 au FileType arduino call ArduinoSetup()
 filetype plugin indent on
 
-"autocmd FileType python compiler pylint
-autocmd FileType python set ts=2 et sts=2 sw=2 ai
 
 au BufRead,BufNewFile *.txt,README*,TODO*,CHANGELOG,NOTES
         \ setlocal autoindent expandtab tabstop=8 softtabstop=2 shiftwidth=2 filetype=asciidoc

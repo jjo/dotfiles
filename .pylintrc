@@ -1,2 +1,5 @@
 [FORMAT]
 indent-string='    '
+
+[MESSAGES CONTROL]
+disable=I0011
