@@ -24,3 +24,5 @@
 [diff]
 	guitool = meld
 	tool = vimdiff
+[push]
+	default = simple
