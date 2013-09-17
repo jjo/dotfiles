@@ -1,3 +1,8 @@
-#jjo: nice hack to cmdline usability =)
+# ~/.inputrc:
+# jjo: nice hack to cmdline usability =)
+#      after saving to ~/.inputrc, start a new shell (e.g.: exec bash),
+#      then try typing e.g.:
+#          ls<CursorUp>
+#      -> will show/filter only previous cmds starting with "ls"
 "\e[A": history-search-backward
 "\e[B": history-search-forward
