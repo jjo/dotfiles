@@ -3,5 +3,6 @@ alias dless='/usr/bin/colordiff | /usr/bin/less -R'
 . /usr/share/bash-completion/completions/ssh
 complete -F _ssh gsh.py
 complete -F _ssh ssh.sh
+complete -F _ssh mosh.sh
 ## for .bash_profile:
 #test -x /usr/bin/keychain && eval `keychain --eval`
