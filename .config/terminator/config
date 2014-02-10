@@ -1,0 +1,29 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+[keybindings]
+  switch_to_tab_10 = None
+  switch_to_tab_6 = <Ctrl>6
+  switch_to_tab_4 = <Ctrl>4
+  switch_to_tab_5 = <Ctrl>5
+  switch_to_tab_2 = <Ctrl>2
+  switch_to_tab_3 = <Ctrl>3
+  switch_to_tab_1 = <Ctrl>1
+  new_tab = <Ctrl><Shift>t
+[profiles]
+  [[default]]
+    background_image = None
+    font = Ubuntu Mono 13
+    cursor_color = "#aaccaa"
+  [[AmarioPAtito]]
+    background_image = None
+    background_color = "#ffffdd"
+    foreground_color = "#000000"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
