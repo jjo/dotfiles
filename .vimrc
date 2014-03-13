@@ -8,7 +8,8 @@ filetype off
 
 call pathogen#infect()
 call pathogen#helptags()
-let g:pymode_lint_checker = "pyflakes,pep8,mccabe,pylint"
+"let g:pymode_lint_checker = "pyflakes,pep8,mccabe,pylint"
+let g:pymode_lint_checker = "pyflakes,pep8,pylint"
 
 filetype plugin indent on
 syntax on
