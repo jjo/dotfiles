@@ -1,0 +1,45 @@
+# /etc/apparmor.d/opt.copy: apparmor profile for copy.com's linux cmdline tool(s)
+# Author: JuanJo Ciarlante <jjo@canonical.com>
+#
+# Assumes:
+#   /opt/copy/ : copy.com binaries, e.g /opt/copy/x86_64/CopyCmd
+#   $HOME/Copy/: your "root" copy folder
+#
+# Parse, activate:
+#   sudo apparmor_parser -r /etc/apparmor.d/opt.copy
+#   sudo aa-enforce /etc/apparmor.d/opt.copy
+
+#include <tunables/global>
+
+/opt/copy/{x86,x86_64,armv6h}/Copy* {
+  /lib/*/libc*so* mr,
+  /lib/*/libpthread*so* mr,
+  /lib/*/libdl*so* mr,
+  /lib/*/librt*so* mr,
+  /lib/*/libnsl*so* mr,
+  /lib/*/libresolv*so* mr,
+  # nameservice will also include networking
+  #include <abstractions/nameservice>
+  /dev/null       rw,
+  /dev/urandom r,
+  # encrypted ~/.Private and old-style encrypted $HOME
+  owner @{HOME}/.Private/** mrixwlk,
+  # new-style encrypted $HOME
+  owner @{HOMEDIRS}/.ecryptfs/*/.Private/** mrixwlk,
+  /opt/copy/*/* rmPx,
+  @{HOME}/.copy/** rwmk,       # settings
+  @{HOME}/.copy/ rw,           # settings
+  @{HOME}/Copy/ rw,         # the shared folder
+  @{HOME}/Copy/** krw,      # the shared folder
+  /var/tmp/* w,
+  owner /var/tmp/** rwmk,
+  owner /var/tmp/**/ rwmk,
+  /etc/ld.so.cache r,
+  /etc/mtab r,
+  /etc/localtime r,
+  /proc/stat r,
+  /proc/cpuinfo r,
+  /sys/devices/system/cpu/online r,
+  /proc/sys/vm/overcommit_memory r,
+}
+# vim:syntax=apparmor
