@@ -27,10 +27,10 @@
   # new-style encrypted $HOME
   owner @{HOMEDIRS}/.ecryptfs/*/.Private/** mrixwlk,
   /opt/copy/*/* rmPx,
-  @{HOME}/.copy/** rwmk,       # settings
-  @{HOME}/.copy/ rw,           # settings
-  @{HOME}/Copy/ rw,         # the shared folder
-  @{HOME}/Copy/** krw,      # the shared folder
+  @{HOME}/.copy/** rwmk,    # settings
+  @{HOME}/.copy/ rw,
+  @{HOME}/Copy/ rw,         # root folder
+  @{HOME}/Copy/** krw,
   /var/tmp/* w,
   owner /var/tmp/** rwmk,
   owner /var/tmp/**/ rwmk,
