@@ -14,22 +14,22 @@ caption string "%-Lw%{= gK}%50>%n%f* %t %u%{-}%+Lw%<| %H | %C%a %d/%m/%Y"
 unsetenv SESSION_MANAGER # ... else some X11 apps (notably ooffice) from launched screen loop trying to contact session manager
 
 ##jjo 28-Feb-2013: shorter timeout
-#maptimeout 10
+maptimeout 10
 
 bell_msg "^G beeep en window %n ^G"
 hardstatus off
 ##jjo 29-Dec-2008: IBM TP-like keyboard keys (2 above cursors)
-bindkey -t "\033O3C" stuff "\033OC"
-bindkey -t "\033O3D" stuff "\033OD"
+bindkey "\033O3C" stuff "\033OC"
+bindkey "\033O3D" stuff "\033OD"
 #bindkey -t "\033[3C" stuff "\033OC"
 #bindkey -t "\033[3D" stuff "\033OD"
 ##jjo 17-Nov-2007:  map khome and kend in gnome-terminal to screen
-bindkey -t "\033OH" stuff "\033[1~"
-bindkey -t "\033OF" stuff "\033[4~"
+bindkey "\033OH" stuff "\033[1~"
+bindkey "\033OF" stuff "\033[4~"
 bindkey -t ^th hardcopy
 #bindkey ^? stuff ^h
-bindkey -t ^t^h bindkey -k kb stuff ^?
-bindkey -t ^t^? bindkey -k kb stuff ^h
+bindkey ^t^h bindkey -k kb stuff ^?
+bindkey ^t^? bindkey -k kb stuff ^h
 bindkey "\033," copy
 #Alt-N for quick switch
 bindkey "\0330" select 0
