@@ -24,13 +24,21 @@ set abort_nosubject=no
 alternates '(juanjosec|jjo)([-+].*)?@.*'
 set hdr_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s" # format of the index
 
+bind index "^" imap-fetch-mail
+
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = 8050D21C
+set pgp_timeout = 3600
+#set crypt_autosign = yes
+set crypt_replyencrypt = yes
+
 hdr_order From: Date: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
 ignore *
 unignore From: Date: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
 my_hdr Reply-To:
 
 # setup gmail filters to apply the corresp. labels:
-mailboxes ! "=[Gmail]/Important" =01-todo =02-wait4 =10-to_me =12-inbox2 =13-inbox3 =[Gmail]/Drafts "=[Gmail]/All Mail"
+mailboxes ! "=[Gmail]/Important" =00-to_me =01-todo =02-wait4 =03-ref =12-inbox2 =13-inbox3 =[Gmail]/Drafts "=[Gmail]/All Mail"
 
 #set editor="jed %s -l ~/.mutt/jed.mutt.sl"
 set editor="vim %s"
