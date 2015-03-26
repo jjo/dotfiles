@@ -1,0 +1,3 @@
+[submodule "tmp/vim/bundle/golang"]
+	path = tmp/vim/bundle/golang
+	url = git@github.com:jnwhiteh/vim-golang.git

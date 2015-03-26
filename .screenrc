@@ -10,6 +10,8 @@ caption always
 #caption string "%w | %H | %C%a %d/%m/%Y"
 #hardstatus alwayslastline "%-Lw%{= BK}%50>%n%f* %t %u%{-}%+Lw%<" # didier
 caption string "%-Lw%{= gK}%50>%n%f* %t %u%{-}%+Lw%<| %H | %C%a %d/%m/%Y"
+# :hardstatus string "%{gk}[%= %{wk}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %Y %M %02d %{W}%c %{g}]"
+
 #setenv SSH_AUTH_SOCK $HOME/.ssh/ssh-agent-${HOSTNAME}.sock
 unsetenv SESSION_MANAGER # ... else some X11 apps (notably ooffice) from launched screen loop trying to contact session manager
 

@@ -12,34 +12,49 @@
 #include <tunables/global>
 
 /opt/copy/{x86,x86_64,armv6h}/Copy* {
-  /lib/*/libc*so* mr,
-  /lib/*/libpthread*so* mr,
-  /lib/*/libdl*so* mr,
-  /lib/*/librt*so* mr,
-  /lib/*/libnsl*so* mr,
-  /lib/*/libresolv*so* mr,
-  # nameservice will also include networking
-  #include <abstractions/nameservice>
-  /dev/null       rw,
-  /dev/urandom r,
-  # encrypted ~/.Private and old-style encrypted $HOME
-  owner @{HOME}/.Private/** mrixwlk,
-  # new-style encrypted $HOME
-  owner @{HOMEDIRS}/.ecryptfs/*/.Private/** mrixwlk,
-  /opt/copy/*/* rmPx,
-  @{HOME}/.copy/** rwmk,    # settings
-  @{HOME}/.copy/ rw,
-  @{HOME}/Copy/ rw,         # root folder
-  @{HOME}/Copy/** krw,
-  /var/tmp/* w,
-  owner /var/tmp/** rwmk,
-  owner /var/tmp/**/ rwmk,
-  /etc/ld.so.cache r,
-  /etc/mtab r,
-  /etc/localtime r,
-  /proc/stat r,
-  /proc/cpuinfo r,
-  /sys/devices/system/cpu/online r,
-  /proc/sys/vm/overcommit_memory r,
+    # nameservice will also include networking
+    #include <abstractions/base>
+    #include <abstractions/nameservice>
+    #include <abstractions/dbus>
+    #include <abstractions/dbus-session>
+    #include <abstractions/user-tmp>
+    #include <abstractions/xdg-desktop>
+    #include <abstractions/freedesktop.org>
+    #include <abstractions/fonts>
+    #include <abstractions/gnome>
+    /etc/mtab r,
+    /sys/devices/system/cpu/online r,
+    @{PROC}/sys/vm/overcommit_memory r,
+    @{PROC}/@{pid}/ r,
+    @{PROC}/@{pid}/cmdline r,
+    owner @{HOME} r,
+    # encrypted ~/.Private and old-style encrypted $HOME
+    owner @{HOME}/.Private/** mrixwlk,
+    # new-style encrypted $HOME
+    owner @{HOMEDIRS}/.ecryptfs/*/.Private/ rw,
+    owner @{HOMEDIRS}/.ecryptfs/*/.Private/** mrixwlk,
+    /opt/copy/*/** rmPx,
+    @{HOME}/.Private/ rw,    # settings
+    @{HOME}/.copy/** rwmk,   # settings
+    @{HOME}/.copy/ rw,
+    @{HOME}/.gtk-bookmarks rw,
+    @{HOME}/.gtkrc* r,
+    @{HOME}/.config/Barracuda* rwlk,
+    @{HOME}/.config/autostart/CopyAgent.desktop rwlk,
+    @{HOME}/.config/Trolltech.conf rwlk,
+    /var/tmp/* w,
+    owner /var/tmp/** rwmk,
+    owner /var/tmp/**/ rwmk,
+    /usr/bin/xdg-open mrUxwlk,
+    /usr/bin/firefox.sh mrPxwlk,
+    # CopyCmd:
+    /bin/mv rmix,
+    /opt/copy/{x86,x86_64,armv6h}/ rwmk,
+    /opt/copy/{x86,x86_64,armv6h}/synclogcopycmd.txt rwmk,
+    #
+    @{HOME}/Copy/ rw,        # root folder
+    @{HOME}/Copy/** krw,
+    @{HOME}/Downloads/ rw,        # root folder
+    @{HOME}/Downloads/** krw,
 }
 # vim:syntax=apparmor

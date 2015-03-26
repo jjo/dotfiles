@@ -1,13 +1,22 @@
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'jnwhiteh/vim-golang.git'
+Bundle 'klen/python-mode.git'
+Bundle 'scrooloose/nerdtree'
+Bundle 'ervandew/supertab'
+
+au BufRead,BufNewFile *.go set filetype=go
+  \ ts=4 et sts=4 sw=4 si
+
 " Highlight >80cols, extra space, and others
 highlight ExtraSpace ctermbg=grey ctermfg=white guibg=#707070
 au BufWinEnter * let w:m1=matchadd('ExtraSpace', ' \+$', -1)
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+\|XXX\|TODO.jjo.', -1)
-" https://github.com/klen/python-mode#how-to-install
-" Pathogen load
-filetype off
-
-call pathogen#infect()
-call pathogen#helptags()
 "let g:pymode_lint_checker = "pyflakes,pep8,mccabe,pylint"
 let g:pymode_lint_checker = "pyflakes,pep8,pylint"
 
@@ -15,18 +24,17 @@ filetype plugin indent on
 syntax on
 
 " pythonisms
-"filetype plugin indent on
-"autocmd FileType python compiler pylint
-"autocmd FileType lua,puppet,python set sw=4 ts=4 sts=4 et ai smarttab
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python compiler pylint
+autocmd FileType lua,puppet,python set sw=4 ts=4 sts=4 et ai smarttab
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-
-syntax on
 set modeline
-imap <F2> :r !date +[\%T]o
-map <F2> :r !date +[\%T]
+"imap <F2> :r !date +[\%T]o
+"map <F2> :r !date +[\%T]
+imap <F2> <Esc>:NERDTreeToggle<CR>
+map <F2> :NERDTreeToggle<CR>
 map <F8> :new<CR>:read !cg-diff<CR>:set syntax=diff buftype=nofile<CR>gg
-map <F9> :make 
+map <F9> :make
 map <F10> :cn! <C-M>
 map <F11> :cp! <C-M>
 map ,cu mX:s,/[*] \(.*\) [*]/,\1,<C-M>:nohls<C-M>
@@ -61,13 +69,7 @@ function! GnuIndent()
   setlocal shiftwidth=2
   setlocal tabstop=8
 endfunction
-au FileType c,cpp,arduino call GnuIndent() 
-
-" GO (golang.org)
-"   cp $GOROOT/misc/vim/{ftdetect,syntax} ~/.vim/
-au BufRead,BufNewFile *.go set filetype=go
-  \ ts=2 et sts=2 sw=2 ai
-
+au FileType c,cpp,arduino call GnuIndent()
 
 au BufRead,BufNewFile *.proto set filetype=cpp
   \ ts=2 et sts=2 sw=2 ai
@@ -75,29 +77,5 @@ au BufRead,BufNewFile *.proto set filetype=cpp
 au BufRead,BufNewFile *.szl set filetype=szl
   \ ts=2 et sts=2 sw=2 ai
 
-" java/android
-"
-
-au BufRead,BufNewFile build.xml,*.java
-  \ set makeprg=ant\ -emacs
-
-" low-weight cscope
-if has("cscope")
-  set csprg=/usr/bin/cscope
-  set csto=0
-  set cst
-  set nocsverb
-  " add any database in current directory
-  if filereadable("cscope.out")
-    cs add cscope.out
-    " else add database pointed to by environment
-  elseif $CSCOPE_DB != ""
-    cs add $CSCOPE_DB
-  endif
-  set csverb
-  map g<C-]> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
-endif
-
-" avoid autoindent when pasting w/middle click
 set bg=dark
 set mouse=a
