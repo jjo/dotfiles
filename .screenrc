@@ -9,8 +9,10 @@
 caption always
 #caption string "%w | %H | %C%a %d/%m/%Y"
 #hardstatus alwayslastline "%-Lw%{= BK}%50>%n%f* %t %u%{-}%+Lw%<" # didier
-caption string "%-Lw%{= gK}%50>%n%f* %t %u%{-}%+Lw%<| %H | %C%a %d/%m/%Y"
-# :hardstatus string "%{gk}[%= %{wk}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %Y %M %02d %{W}%c %{g}]"
+# caption string "%-Lw%{= gK}%50>%n%f* %t %u%{-}%+Lw%<| %H | %C%a %d/%m/%Y"
+caption string "%{gk}[ %H ][%= %{wk}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{g} %Y/%M/%02d %{W}%c %{g}]"
+# hardstatus off
+hardstatus string "* %t%?(%u)%?%{r}"
 
 #setenv SSH_AUTH_SOCK $HOME/.ssh/ssh-agent-${HOSTNAME}.sock
 unsetenv SESSION_MANAGER # ... else some X11 apps (notably ooffice) from launched screen loop trying to contact session manager
@@ -19,7 +21,6 @@ unsetenv SESSION_MANAGER # ... else some X11 apps (notably ooffice) from launche
 maptimeout 10
 
 bell_msg "^G beeep en window %n ^G"
-hardstatus off
 ##jjo 29-Dec-2008: IBM TP-like keyboard keys (2 above cursors)
 bindkey "\033O3C" stuff "\033OC"
 bindkey "\033O3D" stuff "\033OD"
