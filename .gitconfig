@@ -14,7 +14,7 @@
 	di = diff
 	unstage = reset HEAD --
 	ls = ls-files -v --stage --abbrev=8
-	log-graph = log --pretty=oneline --graph --all
+	log-graph = log --pretty=oneline --graph --all --abbrev-commit --decorate
 	log-grep = !sh -c 'git log -p -m --pickaxe-regex -S$1 $2' -
 	uncommit = reset --soft HEAD^
 
@@ -26,3 +26,6 @@
 	tool = vimdiff
 [push]
 	default = simple
+
+[url "git+ssh://jjo@git.launchpad.net/"]
+	insteadof = lp:
