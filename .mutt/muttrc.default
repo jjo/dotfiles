@@ -12,6 +12,7 @@ set folder = "imaps://imap.gmail.com:993"
 set record="+[Gmail]/Sent Mail"
 set postponed="+[Gmail]/Drafts"
 # previously do:  mkdir -p ~/.mutt/cache/{headers,bodies}
+set quit=ask-yes
 set header_cache="~/.mutt/cache/headers"
 set message_cachedir="~/.mutt/cache/bodies"
 set certificate_file=~/.mutt/certificates 
@@ -38,13 +39,22 @@ unignore From: Date: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
 my_hdr Reply-To:
 
 # setup gmail filters to apply the corresp. labels:
-mailboxes ! "=[Gmail]/Important" =00-to_me =01-todo =02-wait4 =03-ref =12-inbox2 =13-inbox3 =[Gmail]/Drafts "=[Gmail]/All Mail"
+mailboxes ! \
+"=[Gmail]/Important" \
+=00-to_me =01-todo \
+=02-wait4 =03-ref \
+=12-inbox2 \
+=13-inbox3 \
+=[Gmail]/Drafts \
+"=[Gmail]/All Mail"
 
+macro generic,attach <F3> "<pipe-message>cat > ~/tmp/mutt.\$PPID.html; sensible-browser ~/tmp/mutt.\$PPID.html"
 #set editor="jed %s -l ~/.mutt/jed.mutt.sl"
-set editor="vim %s"
+set editor="vim -c '/^--' %s '+set et si sw=2 ts=2 tw=78'"
 set alias_file=~/.mutt/mail_aliases
 source ~/.mutt/mail_aliases
 
+save-hook . =Archives.`date +%Y`.INBOX
 send-hook . 'set realname="JuanJo Ciarlante"'
 ## hack to make  $reverse_name and 'my_hdr From:' work ok (eg mlists)
 send-hook . 'set from=juanjosec@gmail.com'
