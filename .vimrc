@@ -1,6 +1,18 @@
+" syntastic
+" cd ~/.vim/bundle && \
+" git clone https://github.com/scrooloose/syntastic.git
+"  execute pathogen#infect()
+"  set statusline+=%#warningmsg#
+"  set statusline+=%{SyntasticStatuslineFlag()}
+"  set statusline+=%*
+"  
+"  let g:syntastic_always_populate_loc_list = 1
+"  let g:syntastic_auto_loc_list = 1
+"  let g:syntastic_check_on_open = 1
+"  let g:syntastic_check_on_wq = 0
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
@@ -9,6 +21,8 @@ Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'klen/python-mode.git'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
+
+call vundle#end()
 
 au BufRead,BufNewFile *.go set filetype=go
   \ ts=4 et sts=4 sw=4 si
@@ -20,15 +34,15 @@ au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+\|XXX\|TODO.jjo.', -1)
 "let g:pymode_lint_checker = "pyflakes,pep8,mccabe,pylint"
 let g:pymode_lint_checker = "pyflakes,pep8,pylint"
 
+set modeline
 filetype plugin indent on
 syntax on
 
 " pythonisms
 autocmd FileType python compiler pylint
-autocmd FileType lua,puppet,python set sw=4 ts=4 sts=4 et ai smarttab
+autocmd FileType lua,puppet,python,yaml set sw=4 ts=4 sts=4 et ai smarttab
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-set modeline
 "imap <F2> :r !date +[\%T]o
 "map <F2> :r !date +[\%T]
 imap <F2> <Esc>:NERDTreeToggle<CR>
@@ -79,3 +93,5 @@ au BufRead,BufNewFile *.szl set filetype=szl
 
 set bg=dark
 set mouse=a
+" allow erasing previous characters, in insert mode:
+set backspace=2
