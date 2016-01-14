@@ -3,6 +3,7 @@ set from=juanjosec@gmail.com
 set realname="JuanJo Ciarlante"
 set reverse_name=yes
 set reverse_realname=no
+set timeout=10
 set imap_user = 'juanjosec@gmail.com'
 set spoolfile = imaps://imap.gmail.com:993/INBOX
 #set sendmail="/usr/sbin/ssmtp -C$HOME/.mutt/ssmtp.conf"
