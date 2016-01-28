@@ -45,6 +45,12 @@ bindkey "\0336" select 6
 bindkey "\0337" select 7
 bindkey "\0338" select 8
 bindkey "\0339" select 9
+bindkey "\033q" select 10
+bindkey "\033w" select 11
+bindkey "\033e" select 12
+bindkey "\033r" select 13
+bindkey "\033t" select 14
+bindkey "\033y" select 15
 #Swap w/prev screen:
 bindkey "\033-" other
 #Alt-n/p for next/prev screen
