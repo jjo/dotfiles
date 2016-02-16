@@ -26,7 +26,7 @@ startd() {
     HOMEDIR=$(getent passwd $stuser | awk -F: '{print $6}')
     if [ -f $config ]; then
       echo "Starting syncthing for $stuser"
-      start-stop-daemon -b -o -c $stuser -S -u $stuser --no-close -x $DAEMON -- $DAEMON_ARGS > $LOG_DIR/syncthing.$stuser.log
+      start-stop-daemon -b -o -c $stuser -S -d $HOMEDIR -u $stuser --no-close -x $DAEMON -- $DAEMON_ARGS > $LOG_DIR/syncthing.$stuser.log
     else
       echo "Couldn't start syncthing for $stuser (no $config found)"
     fi
