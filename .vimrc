@@ -23,6 +23,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
 
 call vundle#end()
+let g:pymode_rope_autoimport = 0
 
 au BufRead,BufNewFile *.go set filetype=go
   \ ts=4 et sts=4 sw=4 si
