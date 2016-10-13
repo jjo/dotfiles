@@ -92,6 +92,9 @@ au BufRead,BufNewFile *.proto set filetype=cpp
 au BufRead,BufNewFile *.szl set filetype=szl
   \ ts=2 et sts=2 sw=2 ai
 
+"mail:
+autocmd FileType mail set spell tw=74
+
 set bg=dark
 set mouse=a
 " allow erasing previous characters, in insert mode:
