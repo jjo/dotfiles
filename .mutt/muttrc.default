@@ -26,6 +26,8 @@ set abort_nosubject=no
 alternates '(juanjosec|jjo)([-+].*)?@.*'
 set hdr_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s" # format of the index
 
+bind pager \Ch previous-line
+bind pager \C? previous-line
 bind index "^" imap-fetch-mail
 
 set pgp_use_gpg_agent = yes
