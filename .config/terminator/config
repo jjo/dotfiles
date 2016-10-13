@@ -1,29 +1,35 @@
 [global_config]
-  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  enabled_plugins = APTURLHandler, LaunchpadBugURLHandler
 [keybindings]
+  broadcast_all = None
+  broadcast_group = None
+  broadcast_off = None
+  edit_window_title = None
+  full_screen = <Shift>F11
+  layout_launcher = None
+  new_tab = <Ctrl><Shift>t
+  switch_to_tab_1 = <Ctrl>1
   switch_to_tab_10 = None
-  switch_to_tab_6 = <Ctrl>6
-  switch_to_tab_4 = <Ctrl>4
-  switch_to_tab_5 = <Ctrl>5
   switch_to_tab_2 = <Ctrl>2
   switch_to_tab_3 = <Ctrl>3
-  switch_to_tab_1 = <Ctrl>1
-  new_tab = <Ctrl><Shift>t
-[profiles]
-  [[default]]
-    background_image = None
-    font = Ubuntu Mono 13
-    cursor_color = "#aaccaa"
-  [[AmarioPAtito]]
-    background_image = None
-    background_color = "#ffffdd"
-    foreground_color = "#000000"
+  switch_to_tab_4 = <Ctrl>4
+  switch_to_tab_5 = <Ctrl>5
+  switch_to_tab_6 = <Ctrl>6
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_image = None
+    cursor_color = "#aaccaa"
+    font = Ubuntu Mono 13
+  [[AmarioPAtito]]
+    background_color = "#ffffdd"
+    background_image = None
+    foreground_color = "#000000"
