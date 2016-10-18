@@ -1,0 +1,69 @@
+#set sidebar_visible = no
+set sidebar_visible = yes
+#set sidebar_width = 20
+set sidebar_width = 30
+set sidebar_short_path = yes
+set sidebar_delim_chars = '/.'
+set sidebar_folder_indent = no
+#set sidebar_new_mail_only = no
+set sidebar_new_mail_only = yes
+#sidebar_whitelist '/home/user/mailbox1'
+#sidebar_whitelist '/home/user/mailbox2'
+set sidebar_next_new_wrap = no
+#set sidebar_on_right = no
+set sidebar_divider_char = '|'
+# Enable extended buffy mode to calculate total, new, and flagged
+# message counts for each mailbox.
+set mail_check_stats
+# Display the Sidebar mailboxes using this format string.
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+
+# Sort the mailboxes in the Sidebar using this method:
+#       count    - total number of messages
+#       flagged  - number of flagged messages
+#       new      - number of new messages
+#       path     - mailbox path
+#       unsorted - do not sort the mailboxes
+set sidebar_sort_method = 'unsorted'
+
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager <F3> sidebar-page-up
+bind index,pager <F4> sidebar-page-down
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+
+# Toggle the visibility of the Sidebar.
+bind index,pager B sidebar-toggle-visible
+
+# --------------------------------------------------------------------------
+# COLORS - some unpleasant examples are given
+# --------------------------------------------------------------------------
+# Note: All color operations are of the form:
+#       color OBJECT FOREGROUND BACKGROUND
+
+# Color of the current, open, mailbox
+# Note: This is a general Mutt option which colors all selected items.
+#color indicator cyan black
+#
+## Color of the highlighted, but not open, mailbox.
+#color sidebar_highlight black color8
+color sidebar_highlight yellow blue
+#
+## Color of the divider separating the Sidebar from Mutt panels
+#color sidebar_divider color8 black
+#
+## Color to give mailboxes containing flagged mail
+#color sidebar_flagged red black
+#
+## Color to give mailboxes containing new mail
+#color sidebar_new green black
+color sidebar_new white blue
+#
+## Color to give mailboxes containing no new/flagged mail, etc
+#color sidebar_ordinary color245 default
+
+# --------------------------------------------------------------------------
+
+# vim: syntax=muttrc
