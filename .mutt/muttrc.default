@@ -1,4 +1,5 @@
 ## ~/.mutt/muttrc
+source ~/.mutt/muttrc.sidebar
 set from=juanjosec@gmail.com
 set realname="JuanJo Ciarlante"
 set reverse_name=yes
@@ -26,9 +27,14 @@ set abort_nosubject=no
 alternates '(juanjosec|jjo)([-+].*)?@.*'
 set hdr_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s" # format of the index
 
+bind pager i exit
 bind pager \Ch previous-line
 bind pager \C? previous-line
 bind index "^" imap-fetch-mail
+
+macro index \'1 <limit>(~N|~O)\ (~bjjo|~bJuanJo|~bCiarlante|~p)
+macro index \'n <limit>(~N|~O)
+macro index \'\' <limit>all
 
 set pgp_use_gpg_agent = yes
 set pgp_sign_as = 8050D21C
