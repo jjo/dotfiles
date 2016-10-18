@@ -1,3 +1,4 @@
+#1;5Q
 #set sidebar_visible = no
 set sidebar_visible = yes
 #set sidebar_width = 20
@@ -49,7 +50,7 @@ bind index,pager B sidebar-toggle-visible
 #
 ## Color of the highlighted, but not open, mailbox.
 #color sidebar_highlight black color8
-color sidebar_highlight yellow blue
+color sidebar_highlight brightyellow blue
 #
 ## Color of the divider separating the Sidebar from Mutt panels
 #color sidebar_divider color8 black
