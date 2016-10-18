@@ -27,11 +27,16 @@ set abort_nosubject=no
 alternates '(juanjosec|jjo)([-+].*)?@.*'
 set hdr_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s" # format of the index
 
+set index_format="%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %?y?(%.20Y) ?%s"
+macro index Y <edit-label>
+
 bind pager i exit
 bind pager \Ch previous-line
 bind pager \C? previous-line
 bind index "^" imap-fetch-mail
 
+# labels: 01-TODO, 02-WAIT4, 03-REF
+macro index \'\0 <limit>~y^0
 macro index \'1 <limit>(~N|~O)\ (~bjjo|~bJuanJo|~bCiarlante|~p)
 macro index \'n <limit>(~N|~O)
 macro index \'\' <limit>all
