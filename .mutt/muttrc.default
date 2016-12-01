@@ -33,13 +33,14 @@ macro index Y <edit-label>
 bind pager i exit
 bind pager \Ch previous-line
 bind pager \C? previous-line
-bind index "^" imap-fetch-mail
+macro attach 'V' "<pipe-entry>cat >~/.mutt/cache/mail.html && sensible-browser ~/.mutt/cache/mail.html && rm ~/.mutt/cache/mail.html<enter>"
 
 # labels: 01-TODO, 02-WAIT4, 03-REF
 macro index \'\0 <limit>~y^0
 macro index \'1 <limit>(~N|~O)\ (~bjjo|~bJuanJo|~bCiarlante|~p)
 macro index \'n <limit>(~N|~O)
 macro index \'\' <limit>all
+macro index \'R ":source ~/.mutt/muttrc"
 
 set pgp_use_gpg_agent = yes
 set pgp_sign_as = 8050D21C
