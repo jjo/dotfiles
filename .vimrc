@@ -21,12 +21,10 @@ Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'klen/python-mode.git'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
+Bundle 'fatih/vim-go'
 
 call vundle#end()
 let g:pymode_rope_autoimport = 0
-
-au BufRead,BufNewFile *.go set filetype=go
-  \ ts=4 et sts=4 sw=4 si
 
 " Highlight >80cols, extra space, and others
 highlight ExtraSpace ctermbg=grey ctermfg=white guibg=#707070
@@ -48,12 +46,15 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 "map <F2> :r !date +[\%T]
 imap <F2> <Esc>:NERDTreeToggle<CR>
 map <F2> :NERDTreeToggle<CR>
-map <F8> :new<CR>:read !cg-diff<CR>:set syntax=diff buftype=nofile<CR>gg
-map <F9> :make
-map <F10> :cn! <C-M>
-map <F11> :cp! <C-M>
+map <C-n> :cnext<CR>
+map <C-p> :cprev<CR>
+map <C-k> :make
 map ,cu mX:s,/[*] \(.*\) [*]/,\1,<C-M>:nohls<C-M>
 map ,cc :s,.*,/* & */,<C-M>:nohls<C-M>
+
+"Go using faith/vim-go bundle
+au FileType go set ts=4 et sts=4 sw=4 si
+au FileType go map <C-k> :GoTest<CR>
 
 " arduino pde files
 au BufNewFile,BufRead *.pde set filetype=arduino
