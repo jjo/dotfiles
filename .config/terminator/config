@@ -1,5 +1,5 @@
 [global_config]
-  enabled_plugins = APTURLHandler, LaunchpadBugURLHandler
+  enabled_plugins = EVURLHandler, SFURLHandler, RTURLHandler, APTURLHandler, LaunchpadBugURLHandler
 [keybindings]
   broadcast_all = None
   broadcast_group = None
