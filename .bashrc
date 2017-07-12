@@ -118,7 +118,7 @@ if ! shopt -oq posix; then
 fi
 # jjo
 . ~/.bashrc.jjo
-. ~/.bashrc.canonical
+. ~/.bashrc.bitnami
 
 # The next line updates PATH for the Google Cloud SDK.
 source '/opt/google-cloud-sdk/path.bash.inc'
