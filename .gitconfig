@@ -5,6 +5,7 @@
 	tool = vimdiff
 [core]
 	editor = vim
+	excludesfile = /home/jjo/.gitignore_global
 [alias]
 	last = log -1 HEAD
 	co = checkout

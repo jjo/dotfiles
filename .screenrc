@@ -17,6 +17,10 @@ hardstatus string "* %t%?(%u)%?%{r}"
 #setenv SSH_AUTH_SOCK $HOME/.ssh/ssh-agent-${HOSTNAME}.sock
 unsetenv SESSION_MANAGER # ... else some X11 apps (notably ooffice) from launched screen loop trying to contact session manager
 
+## 12-Jul-2017: bind Ctrl-Up/Down to -> enter copy mode, pageup/down
+## (useful for thinkpads which have pageup/down keys so inconvienient
+bindkey "^[[1;5A" eval "copy" "stuff ^b"
+bindkey "^[[1;5B" eval "copy" "stuff ^f"
 ##jjo 28-Feb-2013: shorter timeout
 maptimeout 10
 

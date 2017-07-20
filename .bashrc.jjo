@@ -1,5 +1,6 @@
 export PATH=$PATH:$HOME/bin
 alias dless='/usr/bin/colordiff | /usr/bin/less -R'
+alias yless='view - -c "set syntax=yaml"'
 test -f /usr/share/bash-completion/completions/ssh && {
 source /usr/share/bash-completion/completions/ssh
 complete -F _ssh gsh.py
@@ -7,6 +8,6 @@ complete -F _ssh ssh.sh
 complete -F _ssh mosh.sh
 }
 ## for .bash_profile:
-#test -x /usr/bin/keychain && eval `keychain --eval`
+test -t 0 && test -x /usr/bin/keychain && eval `keychain --eval`
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
 complete -F _quilt_completion $_quilt_complete_opt dquilt
