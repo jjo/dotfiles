@@ -11,20 +11,25 @@
 "  let g:syntastic_check_on_open = 1
 "  let g:syntastic_check_on_wq = 0
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'jnwhiteh/vim-golang.git'
-Bundle 'klen/python-mode.git'
-Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
-Bundle 'fatih/vim-go'
+Plugin 'jnwhiteh/vim-golang.git'
+Plugin 'klen/python-mode.git'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go'
+Plugin 'google/vim-jsonnet'
 
 call vundle#end()
+filetype plugin indent on    " required
+
 let g:pymode_rope_autoimport = 0
+
+au BufNewFile,BufRead *.jsonnet set filetype=jsonnet sw=2 ts=2 sts=2 et si
 
 " Highlight >80cols, extra space, and others
 highlight ExtraSpace ctermbg=grey ctermfg=white guibg=#707070
