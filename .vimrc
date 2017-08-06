@@ -103,6 +103,9 @@ au BufRead,BufNewFile *.szl set filetype=szl
 "mail:
 autocmd FileType mail set spell tw=74
 
+"others:
+autocmd FileType md set sw=4 ts=4 sts=4 et si smarttab
+
 set bg=dark
 set mouse=a
 " allow erasing previous characters, in insert mode:
