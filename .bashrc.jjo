@@ -18,3 +18,5 @@ complete -F _quilt_completion $_quilt_complete_opt dquilt
 alias dless='/usr/bin/colordiff | /usr/bin/less -R'
 alias yless='view - -c "set syntax=yaml"'
 alias jless='jq . -C |less -R'
+
+source ~/.bashrc.golang
