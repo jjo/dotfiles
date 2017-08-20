@@ -110,3 +110,10 @@ set bg=dark
 set mouse=a
 " allow erasing previous characters, in insert mode:
 set backspace=2
+
+" don't bother w/mouse support in a text console (!)
+if has("gui_running")
+    set mouse=a
+else
+    set mouse=
+endif
