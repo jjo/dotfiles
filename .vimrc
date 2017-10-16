@@ -46,7 +46,8 @@ syntax on
 
 " pythonisms
 autocmd FileType python compiler pylint
-autocmd FileType lua,puppet,python,yaml set sw=4 ts=4 sts=4 et ai smarttab
+autocmd FileType lua,puppet,python set sw=4 ts=4 sts=4 et ai smarttab
+autocmd FileType yaml set sw=2 ts=2 sts=2 et ai smarttab
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 "imap <F2> :r !date +[\%T]o
@@ -104,7 +105,9 @@ au BufRead,BufNewFile *.szl set filetype=szl
 autocmd FileType mail set spell tw=74
 
 "others:
-autocmd FileType md set sw=4 ts=4 sts=4 et si smarttab
+autocmd FileType markdown set sw=2 ts=2 sts=2 et si smarttab
+autocmd FileType sh set sw=4 ts=4 sts=4 et si smarttab
+autocmd FileType eruby set sw=2 ts=2 sts=2 et si smarttab
 
 set bg=dark
 set mouse=a
