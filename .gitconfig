@@ -19,6 +19,7 @@
 	log-grep = !sh -c 'git log -p -m --pickaxe-regex -S$1 $2' -
 	uncommit = reset --soft HEAD^
 	prune-merged = git branch --merged | grep dm/ | grep -v "\\*" | xargs -rn1 git branch -d
+	changelog = log --pretty=format:'- %s %H (%an)'
 
 
 [color]
