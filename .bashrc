@@ -120,11 +120,5 @@ fi
 . ~/.bashrc.jjo
 . ~/.bashrc.bitnami
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/opt/google-cloud-sdk/path.bash.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/opt/google-cloud-sdk/completion.bash.inc'
-
 # added by travis gem
 [ -f /home/jjo/.travis/travis.sh ] && source /home/jjo/.travis/travis.sh
