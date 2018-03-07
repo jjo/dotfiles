@@ -119,6 +119,7 @@ fi
 # jjo
 . ~/.bashrc.jjo
 . ~/.bashrc.bitnami
+test -f ~/.bashrc.private && . ~/.bashrc.private
 
 # added by travis gem
 [ -f /home/jjo/.travis/travis.sh ] && source /home/jjo/.travis/travis.sh

@@ -23,6 +23,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'google/vim-jsonnet'
+Plugin 'airblade/vim-gitgutter'
+" Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
 filetype plugin indent on    " required
@@ -108,6 +110,7 @@ autocmd FileType mail set spell tw=74
 autocmd FileType markdown set sw=2 ts=2 sts=2 et si smarttab
 autocmd FileType sh set sw=4 ts=4 sts=4 et si smarttab
 autocmd FileType eruby set sw=2 ts=2 sts=2 et si smarttab
+autocmd FileType groovy set sw=2 ts=2 sts=2 et si smarttab
 
 set bg=dark
 set mouse=a

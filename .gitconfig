@@ -20,6 +20,7 @@
 	uncommit = reset --soft HEAD^
 	prune-merged = git branch --merged | grep dm/ | grep -v "\\*" | xargs -rn1 git branch -d
 	changelog = log --pretty=format:'- %s %H (%an)'
+	rev-tag = describe --tags
 
 
 [color]
