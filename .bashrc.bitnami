@@ -1,4 +1,6 @@
 export PATH=$PATH:$HOME/src/github.com/facebook/arcanist/bin
 . ~/etc/kubectl-completion.bash
 . ~/etc/minikube-completion.bash
+[ -f ~/kubectl.bash ] && . ~/kubectl.bash
+[ -f ~/kubecfg.bash ] && . ~/kubecfg.bash
 export KUBECFG_JPATH=~/work/src/github.com/ksonnet/ksonnet-lib

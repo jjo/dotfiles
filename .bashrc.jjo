@@ -10,7 +10,7 @@ complete -F _ssh ssh.sh
 complete -F _ssh mosh.sh
 }
 ## for .bash_profile:
-test -t 0 && test -x /usr/bin/keychain && test $(id -u) -ne 0 && eval `keychain --eval`
+test -z "${ASCIINEMA_REC}" && test -t 0 && test -x /usr/bin/keychain && test $(id -u) -ne 0 && eval `keychain --eval`
 
 # debianisms
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
