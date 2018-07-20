@@ -101,6 +101,7 @@ pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
 # defhstatus "screen: ^E (^Et)"
 
 defscrollback 20000
+bindkey ^tZ eval "reset" "scrollback 20000"
 
 
 ################

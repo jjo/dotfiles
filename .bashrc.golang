@@ -1,4 +1,4 @@
-export GOPATH=$HOME/work
+export GOPATH=$HOME/go
 #export GOBIN=$HOME/gobin
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN

@@ -17,10 +17,12 @@
 	ls = ls-files -v --stage --abbrev=8
 	log-graph = log --pretty=oneline --graph --all --abbrev-commit --decorate
 	log-grep = !sh -c 'git log -p -m --pickaxe-regex -S$1 $2' -
+	log-one-line-custom = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
 	uncommit = reset --soft HEAD^
 	prune-merged = git branch --merged | grep dm/ | grep -v "\\*" | xargs -rn1 git branch -d
 	changelog = log --pretty=format:'- %s %H (%an)'
 	rev-tag = describe --tags
+	re-sign = "!re() { git rebase --exec 'git commit --amend --no-edit -n -S' -i $1; }; re"
 
 
 [color]

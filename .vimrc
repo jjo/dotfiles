@@ -24,12 +24,21 @@ Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'google/vim-jsonnet'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'mileszs/ack.vim'
+Plugin 'buoto/gotests-vim'
 " Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
+
+" Use silversearch-ag "ag" instead of perl'ian ack-grep for
+" :Ack
+let g:ackprg = 'ag --vimgrep'
+
 filetype plugin indent on    " required
 
 let g:pymode_rope_autoimport = 0
+" 80cols is getting forgotten by the new hipsters :( ...
+let g:pymode_lint_ignore = "E501"
 
 au BufNewFile,BufRead *.jsonnet,*.libsonnet set filetype=jsonnet sw=2 ts=2 sts=2 et si
 " Stop annoying vim-jsonnet auto fmt on save:

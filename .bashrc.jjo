@@ -10,7 +10,11 @@ complete -F _ssh ssh.sh
 complete -F _ssh mosh.sh
 }
 ## for .bash_profile:
-test -z "${ASCIINEMA_REC}" && test -t 0 && test -x /usr/bin/keychain && test $(id -u) -ne 0 && eval `keychain --eval`
+test -z "${ASCIINEMA_REC}" && test -t 0 && test -x /usr/bin/keychain && test $(id -u) -ne 0 && {
+  eval `keychain --eval`
+  gpg-agent --daemon 2>/dev/null
+  export GPG_AGENT_INFO="$HOME/.gnupg/S.gpg-agent:$(pgrep -u $USER gpg-agent):1"
+}
 
 # debianisms
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
