@@ -35,3 +35,7 @@
     background_color = "#ffffdd"
     background_image = None
     foreground_color = "#000000"
+  [[default-firacode]]
+    background_image = None
+    font = Fira Code 12
+    use_system_font = False
