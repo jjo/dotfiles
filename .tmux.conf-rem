@@ -1,13 +1,12 @@
 ## UNDO jjo's .tmux.conf, useful for remote tmux'es inside tmux
-unbind-key C-x
-set-option -g prefix C-x
-bind-key C-x last-window
 # Bindings:
 unbind-key C-t
 unbind-key t
 # handy for changing to: prefix C-x
 unbind-key C-x
+set-option -g prefix C-x
 unbind-key x
+bind-key C-x last-window
 # kinda screen's redisplay (redraw window):
 # just make display something :)
 unbind-key l
