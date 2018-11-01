@@ -6,6 +6,7 @@ export EDITOR=/usr/bin/vim
 test -f /usr/share/bash-completion/completions/ssh && {
 source /usr/share/bash-completion/completions/ssh
 complete -F _ssh gsh.py
+complete -F _ssh polysh
 complete -F _ssh ssh.sh
 complete -F _ssh mosh.sh
 }
