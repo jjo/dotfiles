@@ -27,3 +27,8 @@ alias yless='view - -c "set syntax=yaml"'
 alias jless='jq . -C |less -R'
 
 source ~/.bashrc.golang
+test -f etc/kube-ps1.sh && {
+  source etc/kube-ps1.sh
+  PS1='$(kube_ps1)'$PS1
+  kubeoff
+}
