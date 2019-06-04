@@ -1,4 +1,6 @@
-#term screen-256color
+# back-compat from latest (>= 2018) screen binaries setting to screen.xterm-256color
+term screen-256color
+
 #attrcolor b ".I"
 ## Tell screen how to set colors. AB = background, AF=foreground
 #termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
