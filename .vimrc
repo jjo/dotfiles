@@ -134,3 +134,4 @@ if has("gui_running")
 else
     set mouse=
 endif
+"colorscheme monokai

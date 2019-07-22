@@ -32,3 +32,6 @@ test -f etc/kube-ps1.sh && {
   PS1='$(kube_ps1)'$PS1
   kubeoff
 }
+
+test -f ~/.ktx && source ~/.ktx
+test -f ~/.ktx-completion.sh && source ~/.ktx-completion.sh
