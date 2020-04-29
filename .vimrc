@@ -50,7 +50,8 @@ let g:jsonnet_fmt_on_save = 0
 " Highlight >80cols, extra space, and others
 highlight ExtraSpace ctermbg=grey ctermfg=white guibg=#707070
 au BufWinEnter * let w:m1=matchadd('ExtraSpace', ' \+$', -1)
-au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+\|XXX\|TODO.jjo.', -1)
+"au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+\|XXX\|TODO.jjo.', -1)
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', 'XXX\|TODO.jjo.', -1)
 "let g:pymode_lint_checker = "pyflakes,pep8,mccabe,pylint"
 let g:pymode_lint_checker = "pyflakes,pep8,pylint"
 
