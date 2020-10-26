@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export PATH="$PATH:$HOME/bin"
+source $HOME/.bashrc.jjo
 source $HOME/.bashrc.invision
 
 # Path to your oh-my-zsh installation.
