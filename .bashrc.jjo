@@ -5,10 +5,14 @@ export EDITOR=/usr/bin/vim
 ## ssh-like creatures
 test -f /usr/share/bash-completion/completions/ssh && {
 source /usr/share/bash-completion/completions/ssh
-complete -F _ssh gsh.py
-complete -F _ssh polysh
-complete -F _ssh ssh.sh
-complete -F _ssh mosh.sh
+case "$SHELL" in
+    *bash)
+        complete -F _ssh gsh.py
+        complete -F _ssh polysh
+        complete -F _ssh ssh.sh
+        complete -F _ssh mosh.sh
+        ;;
+esac
 }
 ## for .bash_profile:
 test -z "${ASCIINEMA_REC}" && test -t 0 && test -x /usr/bin/keychain && test $(id -u) -ne 0 && {
@@ -19,7 +23,11 @@ test -z "${ASCIINEMA_REC}" && test -t 0 && test -x /usr/bin/keychain && test $(i
 
 # debianisms
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
-complete -F _quilt_completion $_quilt_complete_opt dquilt
+case "$SHELL" in
+    *bash)
+        complete -F _quilt_completion $_quilt_complete_opt dquilt
+        ;;
+esac
 
 # less'ifications
 alias dless='colordiff | /usr/bin/less -R'
