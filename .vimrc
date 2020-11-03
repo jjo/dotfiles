@@ -28,6 +28,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'buoto/gotests-vim'
 Plugin 'hashivim/vim-terraform'
 Plugin 'jjo/vim-cue'
+Plugin 'pedrohdz/vim-yaml-folds'
 " Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
