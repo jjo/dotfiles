@@ -36,3 +36,6 @@
 
 [url "git+ssh://jjo@git.launchpad.net/"]
 	insteadof = lp:
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
