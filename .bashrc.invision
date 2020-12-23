@@ -1,0 +1,2 @@
+export INVISION_KUBECTL_CONFIG_PATH=/home/jjo/invisionapp/sre/github.com/inVisionApp/kubectl-config
+source $INVISION_KUBECTL_CONFIG_PATH/kubectl.sh

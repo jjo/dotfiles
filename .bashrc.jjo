@@ -37,3 +37,5 @@ test -f etc/kube-ps1.sh && {
 test -f ~/.ktx && source ~/.ktx
 test -f ~/.ktx-completion.sh && source ~/.ktx-completion.sh
 export PATH="$PATH:$HOME/.krew/bin"
+complete -C /usr/bin/aws_completer aws
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)

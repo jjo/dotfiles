@@ -118,7 +118,7 @@ if ! shopt -oq posix; then
 fi
 # jjo
 . ~/.bashrc.jjo
-. ~/.bashrc.bitnami
+. ~/.bashrc.invision
 test -f ~/.bashrc.private && . ~/.bashrc.private
 
 # added by travis gem
