@@ -5,7 +5,6 @@
 "  set statusline+=%#warningmsg#
 "  set statusline+=%{SyntasticStatuslineFlag()}
 "  set statusline+=%*
-"  
 "  let g:syntastic_always_populate_loc_list = 1
 "  let g:syntastic_auto_loc_list = 1
 "  let g:syntastic_check_on_open = 1
@@ -28,6 +27,10 @@ Plugin 'mileszs/ack.vim'
 Plugin 'buoto/gotests-vim'
 Plugin 'hashivim/vim-terraform'
 Plugin 'jjo/vim-cue'
+Plugin 'tsandall/vim-rego'
+Plugin 'dense-analysis/ale'
+Plugin 'cappyzawa/starlark.vim'
+Plugin 'cappyzawa/ytt.vim'
 " Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
@@ -44,6 +47,7 @@ let g:pymode_lint_ignore = "E501"
 
 au BufNewFile,BufRead *.jsonnet,*.libsonnet set filetype=jsonnet sw=2 ts=2 sts=2 et si
 au BufNewFile,BufRead *.cue set filetype=cue sw=4 ts=4 noet si
+au BufNewFile,BufRead *.rego set filetype=rego sw=2 ts=2 et si
 " Stop annoying vim-jsonnet auto fmt on save:
 let g:jsonnet_fmt_on_save = 0
 
@@ -52,8 +56,10 @@ highlight ExtraSpace ctermbg=grey ctermfg=white guibg=#707070
 au BufWinEnter * let w:m1=matchadd('ExtraSpace', ' \+$', -1)
 "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+\|XXX\|TODO.jjo.', -1)
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', 'XXX\|TODO.jjo.', -1)
+
+
 "let g:pymode_lint_checker = "pyflakes,pep8,mccabe,pylint"
-let g:pymode_lint_checker = "pyflakes,pep8,pylint"
+let g:pymode_lint_checker = "pyflakes3,pep8,pylint"
 
 set modeline
 filetype plugin indent on
@@ -66,6 +72,8 @@ autocmd FileType yaml set sw=2 ts=2 sts=2 et ai smarttab
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType ruby set sw=2 ts=2 sts=2 et ai smarttab
 autocmd FileType javascript set sw=2 ts=2 sts=2 et ai smarttab
+"autocmd FileType python &makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+"autocmd BufWritePost *.py make
 
 "imap <F2> :r !date +[\%T]o
 "map <F2> :r !date +[\%T]

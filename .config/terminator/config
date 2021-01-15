@@ -1,22 +1,36 @@
 [global_config]
-  enabled_plugins = EVURLHandler, SFURLHandler, RTURLHandler, APTURLHandler, LaunchpadBugURLHandler
   inactive_color_offset = 0.923076923077
+  enabled_plugins = EVURLHandler, SFURLHandler, RTURLHandler, APTURLHandler, LaunchpadBugURLHandler
   title_font = Sans 4
 [keybindings]
-  broadcast_all = None
-  broadcast_group = None
-  broadcast_off = None
-  edit_window_title = None
-  full_screen = <Shift>F11
-  layout_launcher = None
   new_tab = <Ctrl><Shift>t
   switch_to_tab_1 = <Ctrl>1
-  switch_to_tab_10 = None
   switch_to_tab_2 = <Ctrl>2
   switch_to_tab_3 = <Ctrl>3
   switch_to_tab_4 = <Ctrl>4
   switch_to_tab_5 = <Ctrl>5
   switch_to_tab_6 = <Ctrl>6
+  switch_to_tab_10 = None
+  full_screen = <Shift>F11
+  broadcast_off = None
+  broadcast_group = None
+  broadcast_all = None
+  edit_window_title = None
+  layout_launcher = None
+[profiles]
+  [[default]]
+    cursor_color = "#aaccaa"
+    font = Fira Code Medium 13
+    scrollback_lines = 5000
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+  [[AmarioPAtito]]
+    background_color = "#ffffdd"
+    foreground_color = "#000000"
+  [[default-firacode]]
+    cursor_color = "#aaaaaa"
+    font = Fira Code 12
+    use_system_font = False
 [layouts]
   [[default]]
     [[[child1]]]
@@ -26,17 +40,3 @@
       parent = ""
       type = Window
 [plugins]
-[profiles]
-  [[default]]
-    cursor_color = "#aaccaa"
-    font = Fira Code Medium 13
-    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
-    scrollback_lines = 5000
-    use_system_font = False
-  [[AmarioPAtito]]
-    background_color = "#ffffdd"
-    foreground_color = "#000000"
-  [[default-firacode]]
-    cursor_color = "#aaaaaa"
-    font = Fira Code 12
-    use_system_font = False
