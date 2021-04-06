@@ -1,2 +1,13 @@
 export INVISION_KUBECTL_CONFIG_PATH=/home/jjo/invisionapp/sre/github.com/inVisionApp/kubectl-config
 source $INVISION_KUBECTL_CONFIG_PATH/kubectl.sh
+
+_direnv_hook() {
+  local previous_exit_status=$?;
+  trap -- '' SIGINT;
+  eval "$("/home/linuxbrew/.linuxbrew/bin/direnv" export bash)";
+  trap - SIGINT;
+  return $previous_exit_status;
+};
+if ! [[ "${PROMPT_COMMAND:-}" =~ _direnv_hook ]]; then
+  PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+fi

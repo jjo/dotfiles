@@ -123,3 +123,5 @@ test -f ~/.bashrc.private && . ~/.bashrc.private
 
 # added by travis gem
 [ -f /home/jjo/.travis/travis.sh ] && source /home/jjo/.travis/travis.sh
+
+complete -C /home/jjo/.terraform.versions/terraform_0.14.7 terraform

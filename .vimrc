@@ -31,9 +31,14 @@ Plugin 'tsandall/vim-rego'
 Plugin 'dense-analysis/ale'
 Plugin 'cappyzawa/starlark.vim'
 Plugin 'cappyzawa/ytt.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 " Use silversearch-ag "ag" instead of perl'ian ack-grep for
 " :Ack

@@ -2,3 +2,6 @@ export GOPATH=$HOME/go
 #export GOBIN=$HOME/gobin
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+#somehow MacOS golang wants this (?) ->
+#export GOSUMDB="sum.golang.org"
+export GOSUMDB=off
