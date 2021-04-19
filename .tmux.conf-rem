@@ -4,9 +4,9 @@ unbind-key C-t
 unbind-key t
 # handy for changing to: prefix C-x
 unbind-key C-x
-set-option -g prefix C-x
-bind-key C-x last-window
-bind-key x send-prefix
+set-option -g prefix C-b
+bind-key C-b last-window
+bind-key b send-prefix
 # kinda screen's redisplay (redraw window):
 # just make display something :)
 unbind-key l
