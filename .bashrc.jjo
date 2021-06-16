@@ -7,6 +7,18 @@ export EDITOR=/usr/bin/vim
     alias cvlc="vlc -I dummy"
     export PAGER="less -X"
     export EDITOR="vim"
+} || {
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+_direnv_hook() {
+  local previous_exit_status=$?;
+  trap -- '' SIGINT;
+  eval "$("/home/linuxbrew/.linuxbrew/bin/direnv" export bash)";
+  trap - SIGINT;
+  return $previous_exit_status;
+};
+if ! [[ "${PROMPT_COMMAND:-}" =~ _direnv_hook ]]; then
+  PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+fi
 }
 
 ## ssh-like creatures
@@ -57,4 +69,3 @@ complete -C /usr/bin/aws_completer aws
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 complete -C $(ls -l1 ~/.terraform.versions/*.*.*[0-9]|sort -t. -k4n -k5n |tail -1) terraform
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
