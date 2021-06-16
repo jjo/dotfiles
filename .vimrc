@@ -29,6 +29,7 @@ Plugin 'buoto/gotests-vim'
 Plugin 'hashivim/vim-terraform'
 Plugin 'jjo/vim-cue'
 Plugin 'pedrohdz/vim-yaml-folds'
+Plugin 'AndrewRadev/splitjoin.vim'
 " Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
@@ -45,8 +46,8 @@ let g:pymode_lint_ignore = "E501"
 
 au BufNewFile,BufRead *.jsonnet,*.libsonnet set filetype=jsonnet sw=2 ts=2 sts=2 et si
 au BufNewFile,BufRead *.cue set filetype=cue sw=4 ts=4 noet si
-" Stop annoying vim-jsonnet auto fmt on save:
-let g:jsonnet_fmt_on_save = 0
+" Do auto jsonnet fmt on save:
+let g:jsonnet_fmt_on_save = 1
 
 " Highlight >80cols, extra space, and others
 highlight ExtraSpace ctermbg=grey ctermfg=white guibg=#707070
