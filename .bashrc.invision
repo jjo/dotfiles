@@ -1,3 +1,20 @@
 export INVISION_KUBECTL_CONFIG_PATH=$HOME/invisionapp/sre/github.com/inVisionApp/kubectl-config
 source $INVISION_KUBECTL_CONFIG_PATH/kubectl.sh
 
+## AWS SSM
+function node2id() {
+  profile=${1:?missing profile}
+  node=${2:?missing node}
+  id=$(aws ec2 describe-instances --region us-east-1 --filters Name="network-interface.private-dns-name",Values="$node" --profile $profile | jq -r '.Reservations[].Instances[].InstanceId')
+  echo $id
+}
+function ssm-session() {
+  profile=${1:?missing profile}
+  node=${2:?missing node}
+  instance_id=$(node2id $profile $node)
+  if [ -n "$instance_id" ]; then
+    aws ssm start-session --target $instance_id --document-name AWS-StartInteractiveCommand --parameters command="bash -l" --profile $profile
+  else
+    echo "Instance not found"
+  fi
+}
