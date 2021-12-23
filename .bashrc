@@ -118,5 +118,4 @@ if ! shopt -oq posix; then
 fi
 # jjo
 . ~/.bashrc.jjo
-. ~/.bashrc.invision
 test -f ~/.bashrc.private && . ~/.bashrc.private
