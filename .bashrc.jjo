@@ -55,7 +55,7 @@ alias jless='jq . -C |less -R'
 
 alias k='kubectl'
 source ~/.bashrc.golang
-source ~/.bashrc.invision
+source ~/.bashrc.grafana
 test -f etc/kube-ps1.sh && {
   source etc/kube-ps1.sh
   PS1='$(kube_ps1)'$PS1

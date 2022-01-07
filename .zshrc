@@ -112,7 +112,7 @@ autoload -U +X bashcompinit && bashcompinit
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 . $HOME/.bashrc.jjo
-. $HOME/.bashrc.invision
+. $HOME/.bashrc.grafana
 export PATH="$HOME/bin/:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
