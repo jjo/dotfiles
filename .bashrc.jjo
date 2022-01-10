@@ -68,4 +68,4 @@ export PATH="$PATH:$HOME/.krew/bin"
 complete -C /usr/bin/aws_completer aws
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
-complete -C $(ls -l1 ~/.terraform.versions/*.*.*[0-9]|sort -t. -k4n -k5n |tail -1) terraform
+test -d ~/.terraform.versions && complete -C $(ls -l1 ~/.terraform.versions/*.*.*[0-9]|sort -t. -k4n -k5n |tail -1) terraform
