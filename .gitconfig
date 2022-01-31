@@ -41,3 +41,5 @@
 	insteadOf = https://github.com/
 [pager]
 	branch = false
+[credential "https://github.com"]
+	helper = !gh auth git-credential
