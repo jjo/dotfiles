@@ -69,3 +69,4 @@ complete -C /usr/bin/aws_completer aws
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 test -d ~/.terraform.versions && complete -C $(ls -l1 ~/.terraform.versions/*.*.*[0-9]|sort -t. -k4n -k5n |tail -1) terraform
+TKBIN=$(which tk 2>/dev/null) && complete -C "${TKBIN}" tk
