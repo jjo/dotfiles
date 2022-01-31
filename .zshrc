@@ -113,6 +113,8 @@ autoload -U +X bashcompinit && bashcompinit
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 . $HOME/.bashrc.jjo
 . $HOME/.bashrc.grafana
+# jjo: https://unix.stackexchange.com/questions/562398/zsh-complete-the-files-in-current-directory-no-matter-what-command-is
+zstyle ':completion:*' completer _complete _ignored _files
 export PATH="$HOME/bin/:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
