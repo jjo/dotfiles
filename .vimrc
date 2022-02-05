@@ -35,6 +35,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'pedrohdz/vim-yaml-folds'
 Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'crusoexia/vim-monokai'
+Plugin 'morhetz/gruvbox'
+Plugin 'sainnhe/sonokai'
 " Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
@@ -154,3 +157,8 @@ else
     set mouse=
 endif
 "colorscheme monokai
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
