@@ -1,6 +1,5 @@
 # Needed for more colorful colorscheme-s, like sonokai, gruvbox, sublimemonokai
 set -g default-terminal "tmux-256color"
 set -ga terminal-overrides ",*256col*:Tc"
-#set -g terminal-overrides '*tmux-256color*:sitm@,ritm@'
-set -g terminal-overrides 'screen.xterm-new'
-
+# Highlight in reverse instead of italic
+set -g terminal-overrides 'xterm-256*:sitm@,ritm@'

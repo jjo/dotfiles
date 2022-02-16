@@ -38,6 +38,11 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'morhetz/gruvbox'
 Plugin 'sainnhe/sonokai'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+" Plugin 'prabirshrestha/vim-lsp'
+" Plugin 'mattn/vim-lsp-settings'
+
+
 " Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
@@ -45,6 +50,27 @@ call vundle#end()
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
+"coc + jsonnet-language-server
+" GoTo code navigation.
+"--jjo, 2022-0211
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <C-]> <Plug>(coc-definition)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 " Use silversearch-ag "ag" instead of perl'ian ack-grep for
 " :Ack
 let g:ackprg = 'ag --vimgrep'
