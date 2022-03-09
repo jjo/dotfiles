@@ -1,11 +1,23 @@
 [user]
 	name = JuanJo Ciarlante
 	email = juanjosec@gmail.com
+	signingkey = 09D5FB6E8050D21C
 [merge]
 	tool = vimdiff
+	conflictstyle = diff3
+
 [core]
 	editor = vim
 	excludesfile = /home/jjo/.gitignore_global
+	# https://github.com/dandavison/delta
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true  # use n and N to move between diff sections
+
 [alias]
 	last = log -1 HEAD
 	co = checkout
@@ -31,6 +43,7 @@
 [diff]
 	guitool = meld
 	tool = vimdiff
+	colorMoved = default
 [push]
 	default = simple
 
@@ -43,3 +56,5 @@
 	branch = false
 [credential "https://github.com"]
 	helper = !gh auth git-credential
+[gpg]
+	program = gpg

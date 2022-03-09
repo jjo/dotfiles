@@ -40,6 +40,9 @@ test -z "${ASCIINEMA_REC}" && test -t 0 && test -x /usr/bin/keychain && test $(i
   export GPG_AGENT_INFO="$HOME/.gnupg/S.gpg-agent:$(pgrep -u $USER gpg-agent):1"
 }
 
+## Needed for git + gpg if using pinentry-curses
+test -t 0 && export GPG_TTY=$(tty)
+
 # debianisms
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
 case "$SHELL" in
