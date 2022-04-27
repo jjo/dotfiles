@@ -25,18 +25,18 @@ case $(uname -s) in
     ;;
 esac
 
-## ssh-like creatures
-test -f /usr/share/bash-completion/completions/ssh && {
-source /usr/share/bash-completion/completions/ssh
 case "$SHELL" in
     *bash)
         complete -F _ssh gsh.py
         complete -F _ssh polysh
         complete -F _ssh ssh.sh
         complete -F _ssh mosh.sh
+        ## ssh-like creatures
+        test -f /usr/share/bash-completion/completions/ssh && \
+        source /usr/share/bash-completion/completions/ssh
         ;;
 esac
-}
+
 ## for .bash_profile:
 test -z "${ASCIINEMA_REC}" && test -t 0 && test -x /usr/bin/keychain && test $(id -u) -ne 0 && {
   eval `keychain --eval`
@@ -63,17 +63,29 @@ alias jless='jq . -C |less -R'
 alias k='kubectl'
 source ~/.bashrc.golang
 source ~/.bashrc.grafana
+
+# kube-ps1
 test -f etc/kube-ps1.sh && {
   source etc/kube-ps1.sh
   PS1='$(kube_ps1)'$PS1
   kubeoff
 }
 
+# ktx
 test -f ~/.ktx && source ~/.ktx
 test -f ~/.ktx-completion.sh && source ~/.ktx-completion.sh
-export PATH="$PATH:$HOME/.krew/bin"
-complete -C /usr/bin/aws_completer aws
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
+# krew
+export PATH="$PATH:$HOME/.krew/bin"
+
+# aws
+complete -C /usr/bin/aws_completer aws
+
+# terraform
 test -d ~/.terraform.versions && complete -C $(ls -l1 ~/.terraform.versions/*.*.*[0-9]|sort -t. -k4n -k5n |tail -1) terraform
+
+# tanka
 TKBIN=$(which tk 2>/dev/null) && complete -C "${TKBIN}" tk
+
+# nix
+test -e ~/.nix-profile/etc/profile.d/nix.sh && . ~/.nix-profile/etc/profile.d/nix.sh

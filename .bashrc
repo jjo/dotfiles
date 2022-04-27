@@ -109,6 +109,8 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
+case ${SHELL} in
+*bash)
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -116,6 +118,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+;;
+esac
 # jjo
 . ~/.bashrc.jjo
 test -f ~/.bashrc.private && . ~/.bashrc.private

@@ -41,8 +41,6 @@ Plugin 'sainnhe/sonokai'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 " Plugin 'prabirshrestha/vim-lsp'
 " Plugin 'mattn/vim-lsp-settings'
-
-
 " Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
