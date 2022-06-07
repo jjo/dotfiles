@@ -1,0 +1,17 @@
+[[device]]
+device = "/dev/input/by-path/pci-0000:00:15.0-platform-i2c_designware.0-event-mouse"
+gestures = [
+        # ydotool for Wayland /usr/include/linux/input-event-codes.h
+	# Navigate next
+	#{ type = "swipe", direction = "right", fingers = 2, execute = "xdotool key alt+Right" },
+	{ type = "swipe", direction = "right", fingers = 2, execute = "ydotool key 56:1 106:1 56:0 106:0" },
+	# Navigate previous
+	#{ type = "swipe", direction = "left", fingers = 2, execute = "xdotool key alt+Left" },
+	{ type = "swipe", direction = "left", fingers = 2, execute = "ydotool key 56:1 105:1 56:0 105:0" },
+	# Up desktop/workspace
+	{ type = "swipe", direction = "up", fingers = 3, execute = "xdotool key Ctrl+Super+Up" },
+      	#{ type = "swipe", direction = "up", fingers = 3, execute = "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'global.workspace_manager.get_active_workspace().get_neighbor(Meta.MotionDirection.UP).activate(global.get_current_time());'" },
+	# Down desktop/workspace
+	{ type = "swipe", direction = "down", fingers = 3, execute = "xdotool key Ctrl+Super+Down" },
+      	#{ type = "swipe", direction = "down", fingers = 3, execute = "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'global.workspace_manager.get_active_workspace().get_neighbor(Meta.MotionDirection.DOWN).activate(global.get_current_time());'" },
+]

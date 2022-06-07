@@ -39,6 +39,7 @@ Plugin 'crusoexia/vim-monokai'
 Plugin 'morhetz/gruvbox'
 Plugin 'sainnhe/sonokai'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'LnL7/vim-nix'
 " Plugin 'prabirshrestha/vim-lsp'
 " Plugin 'mattn/vim-lsp-settings'
 " Plugin 'nathanaelkane/vim-indent-guides'
