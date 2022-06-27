@@ -32,8 +32,10 @@ case "$SHELL" in
         complete -F _ssh ssh.sh
         complete -F _ssh mosh.sh
         ## ssh-like creatures
-        test -f /usr/share/bash-completion/completions/ssh && \
-        source /usr/share/bash-completion/completions/ssh
+        [[ "$ZSH" == "" ]] && {
+            test -f /usr/share/bash-completion/completions/ssh && \
+            source /usr/share/bash-completion/completions/ssh
+        }
         ;;
 esac
 
