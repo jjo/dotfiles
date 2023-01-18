@@ -59,7 +59,8 @@ esac
 
 # less'ifications
 alias dless='colordiff | /usr/bin/less -R'
-alias yless='view - -c "set syntax=yaml"'
+#alias yless='view - -c "set syntax=yaml"'
+alias yless='jless --yaml'
 
 alias k='kubectl'
 source ~/.bashrc.golang
