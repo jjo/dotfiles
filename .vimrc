@@ -43,6 +43,7 @@ Plugin 'LnL7/vim-nix'
 " Plugin 'prabirshrestha/vim-lsp'
 " Plugin 'mattn/vim-lsp-settings'
 " Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Exafunction/codeium.vim'
 
 call vundle#end()
 
