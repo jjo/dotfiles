@@ -44,6 +44,8 @@ Plugin 'LnL7/vim-nix'
 " Plugin 'mattn/vim-lsp-settings'
 " Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Exafunction/codeium.vim'
+Plugin 'jjo/vim-promql'
+"Plugin 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 call vundle#end()
 
@@ -84,6 +86,7 @@ let g:pymode_lint_ignore = "E501"
 au BufNewFile,BufRead *.jsonnet,*.libsonnet set filetype=jsonnet sw=2 ts=2 sts=2 et si
 au BufNewFile,BufRead *.cue set filetype=cue sw=4 ts=4 noet si
 au BufNewFile,BufRead *.rego set filetype=rego sw=2 ts=2 et si
+au BufNewFile,BufRead *.promql,*.rules set filetype=promql sw=2 ts=2 sts=2 et si
 " Do auto jsonnet fmt on save:
 let g:jsonnet_fmt_on_save = 1
 

@@ -119,3 +119,5 @@ zstyle ':completion:*' completer _complete _ignored _files
 export PATH="$HOME/bin/:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
+
+complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/tanka/*/bin/tk tk
