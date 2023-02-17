@@ -116,7 +116,7 @@ autoload -U +X bashcompinit && bashcompinit
 # test -f /etc/zsh_command_not_found && source /etc/zsh_command_not_found
 # jjo: https://unix.stackexchange.com/questions/562398/zsh-complete-the-files-in-current-directory-no-matter-what-command-is
 zstyle ':completion:*' completer _complete _ignored _files
-export PATH="/home/jjo/bin/overrides/:$HOME/bin/:$PATH"
+export PATH="$HOME/bin/overrides/:$HOME/bin/:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
 
