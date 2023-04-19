@@ -46,6 +46,11 @@ Plugin 'LnL7/vim-nix'
 Plugin 'Exafunction/codeium.vim'
 Plugin 'jjo/vim-promql'
 "Plugin 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+if has('nvim')
+   Plugin 'nvim-lua/plenary.nvim'
+   Plugin 'sindrets/diffview.nvim'
+endif
+
 
 call vundle#end()
 
