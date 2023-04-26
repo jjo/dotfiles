@@ -47,6 +47,7 @@ Plugin 'Exafunction/codeium.vim'
 Plugin 'jjo/vim-promql'
 "Plugin 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 if has('nvim')
+   Plugin 'glepnir/galaxyline.nvim' , { 'branch': 'main' }
    Plugin 'nvim-lua/plenary.nvim'
    Plugin 'sindrets/diffview.nvim'
 endif

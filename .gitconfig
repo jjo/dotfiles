@@ -53,11 +53,18 @@
 [url "git+ssh://jjo@git.launchpad.net/"]
 	insteadof = lp:
 
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+# Needs:
+#   gh auth setup-git
+[url "https://github.com/"]
+	insteadOf = git@github.com:
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/
+
 [pager]
 	branch = false
 [credential "https://github.com"]
 	helper = !gh auth git-credential
 [gpg]
 	program = gpg
+[credential "https://gist.github.com"]
+	helper = !gh auth git-credential
