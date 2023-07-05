@@ -26,7 +26,7 @@
 	co = checkout
 	st = status
 	br = branch
-	ci = commit
+	ci = commit -s
 	di = diff
 	unstage = reset HEAD --
 	ls = ls-files -v --stage --abbrev=8
