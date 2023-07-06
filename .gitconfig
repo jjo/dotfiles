@@ -37,7 +37,7 @@
 	prune-merged = git branch --merged | grep dm/ | grep -v "\\*" | xargs -rn1 git branch -d
 	changelog = log --pretty=format:'- %s %H (%an)'
 	rev-tag = describe --tags
-	re-sign = "!re() { git rebase --exec 'git commit --amend --no-edit -n -S' -i $1; }; re"
+	re-sign = "!re_sign() { git rebase --exec 'git commit --amend --no-edit -n -s -S' -i ${1:?missing commit/branch to start with}; }; re_sign"
 
 
 [color]
