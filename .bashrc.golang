@@ -4,4 +4,5 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 #somehow MacOS golang wants this (?) ->
 #export GOSUMDB="sum.golang.org"
-export GOSUMDB=off
+#jjo 2023-12-31:
+#export GOSUMDB=off
