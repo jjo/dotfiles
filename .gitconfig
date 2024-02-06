@@ -70,3 +70,6 @@
 	helper = !gh auth git-credential
 [includeIf "gitdir:/Users"]
 	path = ~/.gitconfig-macos
+# Goodies from https://blog.gitbutler.com/fosdem-git-talk/
+[rerere]
+	enabled = true
