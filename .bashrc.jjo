@@ -22,6 +22,7 @@ case $(uname -s) in
           PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
         fi
         alias pbcopy='xclip -sel cli'
+        alias open=xdg-open
     ;;
 esac
 
@@ -91,5 +92,3 @@ TKBIN=$(which tk 2>/dev/null) && complete -C "${TKBIN}" tk
 
 # nix
 test -e ~/.nix-profile/etc/profile.d/nix.sh && . ~/.nix-profile/etc/profile.d/nix.sh
-
-alias open=xdg-open
