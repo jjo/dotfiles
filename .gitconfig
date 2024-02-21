@@ -38,6 +38,8 @@
 	changelog = log --pretty=format:'- %s %H (%an)'
 	rev-tag = describe --tags
 	re-sign = "!re_sign() { git rebase --exec 'git commit --amend --no-edit -n -s -S' -i ${1:?missing commit/branch to start with}; }; re_sign"
+	# Goodies from https://blog.gitbutler.com/fosdem-git-talk/
+	blameplus = blame -w -C -C -C
 
 
 [color]
