@@ -129,6 +129,7 @@ map <C-p> :cprev<CR>
 map <C-k> :make
 map ,cu mX:s,/[*] \(.*\) [*]/,\1,<C-M>:nohls<C-M>
 map ,cc :s,.*,/* & */,<C-M>:nohls<C-M>
+map <C-h> :GitGutterNextHunk<CR>
 
 "Go using faith/vim-go bundle
 au FileType go set ts=4 et sts=4 sw=4 si
