@@ -63,9 +63,20 @@ alias dless='colordiff | /usr/bin/less -R'
 #alias yless='view - -c "set syntax=yaml"'
 alias yless='jless --yaml'
 
-alias k='kubectl'
 source ~/.bashrc.golang
 source ~/.bashrc.grafana
+
+# `kubectl` _and_ `k` completion
+which kubectl >& /dev/null && {
+    # Set KUBECONFIG to /dev/null since otherwise the completion command
+    # attempts to make network connections which results in it taking 1+
+    # seconds instead of a few milliseconds. The resulting completion
+    # code is nearly identical in both cases with only some superficial
+    # differences.
+    # shellcheck source=/dev/null
+	source <(KUBECONFIG=/dev/nill kubectl completion "${SHELL##*/}" |sed '/^compdef/s/ kubectl/ kubectl k/')
+	alias k='kubectl'
+}
 
 # kube-ps1
 test -f etc/kube-ps1.sh && {
