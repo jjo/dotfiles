@@ -78,6 +78,11 @@ which kubectl >& /dev/null && {
 	alias k='kubectl'
 }
 
+which stern >& /dev/null && {
+    source <(stern --completion "${SHELL##*/}")
+	alias k='kubectl'
+}
+
 # kube-ps1
 test -f etc/kube-ps1.sh && {
   source etc/kube-ps1.sh
