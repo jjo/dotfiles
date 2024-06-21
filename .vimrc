@@ -20,7 +20,7 @@ Plugin 'jnwhiteh/vim-golang.git'
 Plugin 'klen/python-mode.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plugin 'google/vim-jsonnet'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
@@ -38,6 +38,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'morhetz/gruvbox'
 Plugin 'sainnhe/sonokai'
+Plugin 'junegunn/seoul256.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'LnL7/vim-nix'
 " Plugin 'prabirshrestha/vim-lsp'
@@ -50,6 +51,8 @@ if has('nvim')
    Plugin 'glepnir/galaxyline.nvim' , { 'branch': 'main' }
    Plugin 'nvim-lua/plenary.nvim'
    Plugin 'sindrets/diffview.nvim'
+   Plugin 'folke/tokyonight.nvim'
+   Plugin 'rebelot/kanagawa.nvim'
 endif
 
 
