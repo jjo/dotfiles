@@ -1,0 +1,85 @@
+## ~/.mutt/muttrc
+source ~/.mutt/muttrc.sidebar
+source ~/.mutt/muttrc.private
+
+set ssl_starttls=yes
+set ssl_force_tls=yes
+
+#set record=+sent-mail-`date +%Y`
+set record="+[Gmail]/Sent Mail"
+set postponed="+[Gmail]/Drafts"
+# previously do:  mkdir -p ~/.mutt/cache/{headers,bodies}
+set quit=ask-yes
+set header_cache="~/.mutt/cache/headers"
+set message_cachedir="~/.mutt/cache/bodies"
+set certificate_file=~/.mutt/certificates
+set move=no
+set delete=yes
+set imap_keepalive=900
+set edit_hdrs
+set include
+set reply_to
+set abort_nosubject=no
+set hdr_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s" # format of the index
+
+#set index_format="%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %?y?(%.20Y) ?%s"
+set date_format="%F"
+set index_format="%4C %Z %D %-15.15L (%4l) %s"
+macro index Y <edit-label>
+
+macro index,pager I  <set-flag>O  "Mark as read"
+macro index,pager U  <clear-flag>O  "Mark as unread"
+macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>"  "Go to all mail"
+macro index,pager gs <change-folder>=[Gmail]/Starred<enter> "Go to 'Starred'"
+macro index,pager gd <change-folder>=[Gmail]/Drafts<enter>  "Go to 'Drafts'"
+macro index,pager gl <change-folder>?       "Go to 'Label'"
+macro index,pager gi <change-folder>=INBOX<enter>     "Go to inbox"
+macro index,pager gt "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to 'Sent Mail'"
+macro index,pager d "<save-message>=[Gmail]/Trash<enter>" "Trash"
+macro index,pager \# "<save-message>=[Gmail]/Trash<enter>" "Trash"
+macro index,pager +  <save-message>=[Gmail]/Important<enter><enter> "Mark as important"
+macro index,pager !  <save-message>=[Gmail]/Spam<enter><enter> "Report spam"
+macro index,pager e  "<save-message>=[All]/Gmail Mail<enter><enter>" "Archive conversation"
+macro index,pager E  "<edit>" "Edit message"
+
+folder-hook +INBOX 'macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive conversation"'
+folder-hook +[Gmail]/Trash macro index,pager y <save-message>=INBOX<enter><enter> "Move to inbox"
+folder-hook +[Gmail]/Starred bind  index,pager y flag-message #"Toggle star"
+
+bind pager i exit
+bind pager \Ch previous-line
+bind pager \C? previous-line
+macro attach 'V' "<pipe-entry>cat >~/.mutt/cache/mail.html && sensible-browser ~/.mutt/cache/mail.html && rm ~/.mutt/cache/mail.html<enter>"
+
+
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = 8050D21C
+set pgp_timeout = 3600
+#set crypt_autosign = yes
+set crypt_replyencrypt = yes
+
+hdr_order From: Date: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
+ignore *
+unignore From: Date: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
+my_hdr Reply-To:
+
+# setup gmail filters to apply the corresp. labels:
+mailboxes ! \
+"=[Gmail]/Important" \
+=00-to_me =01-todo \
+=02-wait4 =03-ref \
+=12-inbox2 \
+=13-inbox3 \
+=[Gmail]/Drafts \
+"=[Gmail]/All Mail"
+
+macro generic,attach <F3> "<pipe-message>cat > ~/tmp/mutt.\$PPID.html; sensible-browser ~/tmp/mutt.\$PPID.html"
+#set editor="jed %s -l ~/.mutt/jed.mutt.sl"
+set editor="vim -c '/^--' %s '+set et si sw=2 ts=2 tw=78'"
+set alias_file=~/.mutt/mail_aliases
+source ~/.mutt/mail_aliases
+
+###
+send-hook . 'set signature=~/.signature'
+
+send-hook foo.+@foo.bar.com 'my_hdr From: Other Me <address+foo-bar@gmail.com>
