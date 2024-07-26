@@ -16,7 +16,7 @@ set certificate_file=~/.mutt/certificates
 set move=no
 set delete=yes
 set imap_keepalive=900
-set edit_hdrs
+#set edit_hdrs
 set include
 set reply_to
 set abort_nosubject=no
@@ -29,7 +29,8 @@ macro index Y <edit-label>
 
 macro index,pager I  <set-flag>O  "Mark as read"
 macro index,pager U  <clear-flag>O  "Mark as unread"
-macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>"  "Go to all mail"
+# neomutt fix
+bind index,pager g noop
 macro index,pager gs <change-folder>=[Gmail]/Starred<enter> "Go to 'Starred'"
 macro index,pager gd <change-folder>=[Gmail]/Drafts<enter>  "Go to 'Drafts'"
 macro index,pager gl <change-folder>?       "Go to 'Label'"
