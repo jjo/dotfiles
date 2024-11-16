@@ -108,3 +108,13 @@ TKBIN=$(which tk 2>/dev/null) && complete -C "${TKBIN}" tk
 
 # nix
 test -e ~/.nix-profile/etc/profile.d/nix.sh && . ~/.nix-profile/etc/profile.d/nix.sh
+
+# minio
+complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/minio-mc/*/bin/mc mc
+
+# Wasmer
+export WASMER_DIR="/home/jjo/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+# Rust
+. "$HOME/.cargo/env"

@@ -35,24 +35,37 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'pedrohdz/vim-yaml-folds'
 "Plugin 'AndrewRadev/splitjoin.vim'
-"Plugin 'crusoexia/vim-monokai'
-"Plugin 'morhetz/gruvbox'
-"Plugin 'sainnhe/sonokai'
-"Plugin 'junegunn/seoul256.vim'
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'crusoexia/vim-monokai'
+Plugin 'morhetz/gruvbox'
+Plugin 'sainnhe/sonokai'
+Plugin 'junegunn/seoul256.vim'
 "Plugin 'LnL7/vim-nix'
 " Plugin 'prabirshrestha/vim-lsp'
 " Plugin 'mattn/vim-lsp-settings'
-" Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'Exafunction/codeium.vim'
-"Plugin 'jjo/vim-promql'
-"Plugin 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plugin 'jjo/vim-promql'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+" Markdown
+"Plugin 'godlygeek/tabular'
+"Plugin 'preservim/vim-markdown'
 if has('nvim')
    Plugin 'glepnir/galaxyline.nvim' , { 'branch': 'main' }
    Plugin 'nvim-lua/plenary.nvim'
    Plugin 'sindrets/diffview.nvim'
    Plugin 'folke/tokyonight.nvim'
    Plugin 'rebelot/kanagawa.nvim'
+   Plugin 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+   "avante.nvim"
+   Plugin 'stevearc/dressing.nvim'
+   Plugin 'MunifTanjim/nui.nvim'
+   " Optional deps
+   Plugin 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
+   Plugin 'HakonHarnes/img-clip.nvim'
+   Plugin 'zbirenbaum/copilot.lua'
+   " Yay, pass source=true if you want to build from source
+   Plugin 'yetone/avante.nvim', { 'branch': 'main', 'do': { -> avante#build() }, 'on': 'AvanteAsk' }
 endif
 
 

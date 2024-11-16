@@ -1,15 +1,17 @@
 {
-    "languageserver": {
-      "jsonnet": {
-        "command": "jsonnet-language-server",
-        "args": ["-t"],
-        "rootPatterns": [".git/"],
-        "filetypes": ["jsonnet"]
-      },
-      "python": {
-        "command": "pylsp",
-        "rootPatterns": [".git/"],
-        "filetypes": ["py", "python"]
-      }
+  "suggest.autoTrigger": "none",
+  "suggest.noselect": true,
+  "languageserver": {
+    "jsonnet": {
+      "command": "jsonnet-language-server",
+      "args": ["-t"],
+      "rootPatterns": [".git/"],
+      "filetypes": ["jsonnet"]
+    },
+    "python": {
+      "command": "pylsp",
+      "rootPatterns": [".git/"],
+      "filetypes": ["py", "python"]
     }
+  }
 }

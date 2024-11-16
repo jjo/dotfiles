@@ -123,4 +123,3 @@ esac
 # jjo
 . ~/.bashrc.jjo
 test -f ~/.bashrc.private && . ~/.bashrc.private
-. "$HOME/.cargo/env"
