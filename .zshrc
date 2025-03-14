@@ -69,6 +69,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git direnv)
 
+. $HOME/.zshrc-jjo.d/plugins.zsh
 source $ZSH/oh-my-zsh.sh
 unsetopt autocd
 
@@ -120,3 +121,5 @@ zstyle ':completion:*' completer _complete _ignored _files
 export PATH="$HOME/bin/overrides/:$HOME/bin/:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
+
+complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/grizzly/0.6.1/bin/grr grr
