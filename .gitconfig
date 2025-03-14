@@ -20,6 +20,7 @@
 	side-by-side = true
 	#light = true
 	#show-syntax-themes = true
+	wrap-max-lines = 100
 
 [alias]
 	last = log -1 HEAD
