@@ -124,3 +124,5 @@ esac
 # jjo
 . ~/.bashrc.jjo
 test -f ~/.bashrc.private && . ~/.bashrc.private
+
+complete -C /home/linuxbrew/.linuxbrew/Cellar/grizzly/0.6.1/bin/grr grr

@@ -90,6 +90,9 @@ test -f etc/kube-ps1.sh && {
   kubeoff
 }
 
+# ctx
+. ~/.bashrc-jjo.d/ctx.sh
+
 # ktx
 test -f ~/.ktx && source ~/.ktx
 test -f ~/.ktx-completion.sh && source ~/.ktx-completion.sh
