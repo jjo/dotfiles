@@ -4,7 +4,7 @@ export EDITOR=/usr/bin/vim
 
 # macosx/linux diffs
 case $(uname -s) in
-    Darwin) 
+    Darwin)
         alias cvlc="vlc -I dummy"
         export PAGER="less -X"
         export EDITOR="vim"
@@ -67,14 +67,14 @@ source ~/.bashrc.golang
 source ~/.bashrc.grafana
 
 # `kubectl` _and_ `k` completion
-which kubectl >& /dev/null && {
+which kubectl >& /dev/null && test -n "${ZSH_VERSION}" && {
     # Set KUBECONFIG to /dev/null since otherwise the completion command
     # attempts to make network connections which results in it taking 1+
     # seconds instead of a few milliseconds. The resulting completion
     # code is nearly identical in both cases with only some superficial
     # differences.
     # shellcheck source=/dev/null
-	source <(KUBECONFIG=/dev/nill kubectl completion "${SHELL##*/}" |sed '/^compdef/s/ kubectl/ kubectl k/')
+	source <(KUBECONFIG=/dev/null kubectl completion "${SHELL##*/}" |sed '/^compdef/s/ kubectl/ kubectl k/')
 	alias k='kubectl'
 }
 
@@ -89,9 +89,6 @@ test -f etc/kube-ps1.sh && {
   PS1='$(kube_ps1)'$PS1
   kubeoff
 }
-
-# ctx
-. ~/.bashrc-jjo.d/ctx.sh
 
 # ktx
 test -f ~/.ktx && source ~/.ktx
@@ -121,3 +118,17 @@ export WASMER_DIR="/home/jjo/.wasmer"
 
 # Rust
 . "$HOME/.cargo/env"
+
+. $HOME/.zshrc-jjo.d/zoxide.sh
+. $HOME/.zshrc-jjo.d/gh.zsh
+# test -f /etc/zsh_command_not_found && source /etc/zsh_command_not_found
+# jjo: https://unix.stackexchange.com/questions/562398/zsh-complete-the-files-in-current-directory-no-matter-what-command-is
+zstyle ':completion:*' completer _complete _ignored _files
+export PATH="$HOME/bin/overrides/:$HOME/bin/:$PATH"
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+export PATH="/usr/local/opt/qt@5/bin:$PATH"
+
+complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/grizzly/0.6.1/bin/grr grr
+
+# ctx
+. ~/.bashrc-jjo.d/ctx.sh

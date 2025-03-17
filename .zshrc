@@ -114,12 +114,3 @@ autoload -U +X bashcompinit && bashcompinit
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 . $HOME/.bashrc.jjo
 . $HOME/.bashrc.grafana
-. $HOME/.zshrc-jjo.d/zoxide.sh
-# test -f /etc/zsh_command_not_found && source /etc/zsh_command_not_found
-# jjo: https://unix.stackexchange.com/questions/562398/zsh-complete-the-files-in-current-directory-no-matter-what-command-is
-zstyle ':completion:*' completer _complete _ignored _files
-export PATH="$HOME/bin/overrides/:$HOME/bin/:$PATH"
-export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-export PATH="/usr/local/opt/qt@5/bin:$PATH"
-
-complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/grizzly/0.6.1/bin/grr grr

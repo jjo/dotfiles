@@ -26,3 +26,7 @@ ctx (){
             ;;
     esac
 }
+
+test -n "${CONTEXT}" && {
+    PROMPT='${CONTEXT}|'"${PROMPT#*|}"
+}
