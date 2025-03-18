@@ -1,20 +1,36 @@
+ctx_prompt() {
+    case "${CONTEXT}" in
+        none|"")
+            PROMPT="${PROMPT#*|}"
+            ;;
+        *)
+            PROMPT='${CONTEXT}|'"${PROMPT#*|}"
+            ;;
+    esac
+}
+
 ctx (){
-    test -n "${CONTEXT}" || : "${1:?"Usage: ctx {work|personal|um}"}"
+    test -n "${CONTEXT}" || : "${1:?"Usage: ctx {work|personal|um|none}"}"
     case "$1" in
-        work)
-            export HISTFILE="${HISTFILE%-*}"
+        w|work)
+            export HISTFILE="${HISTFILE%-*}" ## <- default HISTFILE
             export KUBECONFIG=~/.kube/config
-            export CONTEXT="$1"
+            export CONTEXT="work"
             ;;
         p|personal)
             export HISTFILE="${HISTFILE%-*}-personal"
             export KUBECONFIG=~/.kube/kind-kind
             export CONTEXT="personal"
             ;;
-        um)
+        u|um)
             export HISTFILE="${HISTFILE%-*}-um"
             export KUBECONFIG=~/.kube/um-metal.kubeconfig
-            export CONTEXT="$1"
+            export CONTEXT="um"
+            ;;
+        n|none)
+            export HISTFILE="${HISTFILE%-*}"
+            unset KUBECONFIG
+            unset CONTEXT
             ;;
         "")
             echo "Current context: $CONTEXT"
@@ -25,8 +41,7 @@ ctx (){
             return 1
             ;;
     esac
+    ctx_prompt
 }
 
-test -n "${CONTEXT}" && {
-    PROMPT='${CONTEXT}|'"${PROMPT#*|}"
-}
+ctx_prompt
