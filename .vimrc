@@ -6,7 +6,7 @@ filetype off                  " Required for Vundle setup
 set encoding=utf-8            " Set default encoding
 set fileencoding=utf-8        " Set file encoding
 set modeline                  " Enable modeline
-set mouse=a                   " Enable mouse in all modes
+set mouse=c                   " Enable mouse only in cli
 set backspace=indent,eol,start " Allow backspacing over everything
 set hidden                    " Allow buffer switching without saving
 set history=1000              " Store more history
