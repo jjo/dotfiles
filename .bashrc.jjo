@@ -5,6 +5,7 @@ export EDITOR=/usr/bin/vim
 # macosx/linux diffs
 case $(uname -s) in
     Darwin)
+        eval $(/usr/local/bin/brew shellenv)
         alias cvlc="vlc -I dummy"
         export PAGER="less -X"
         export EDITOR="vim"
@@ -109,15 +110,18 @@ TKBIN=$(which tk 2>/dev/null) && complete -C "${TKBIN}" tk
 # nix
 test -e ~/.nix-profile/etc/profile.d/nix.sh && . ~/.nix-profile/etc/profile.d/nix.sh
 
+# ctx
+. ~/.bashrc-jjo.d/ctx.sh
+
 # minio
-complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/minio-mc/*/bin/mc mc
+test -d ${HOMEBREW_CELLAR}/minio-mc && complete -o nospace -C ${HOMEBREW_CELLAR}/minio-mc/*/bin/mc mc
 
 # Wasmer
 export WASMER_DIR="/home/jjo/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # Rust
-. "$HOME/.cargo/env"
+test -d $HOME/.cargo && . "$HOME/.cargo/env"
 
 . $HOME/.zshrc-jjo.d/zoxide.sh
 . $HOME/.zshrc-jjo.d/gh.zsh
@@ -128,7 +132,4 @@ export PATH="$HOME/bin/overrides/:$HOME/bin/:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
 
-complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/grizzly/0.6.1/bin/grr grr
-
-# ctx
-. ~/.bashrc-jjo.d/ctx.sh
+test -d ${HOMEBREW_CELLAR}/grizzly && complete -o nospace -C ${HOMEBREW_CELLAR}/grizzly/*/bin/grr grr
