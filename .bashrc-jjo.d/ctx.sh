@@ -9,11 +9,10 @@ ctx_prompt() {
     esac
 }
 
-ctx (){
-    test -n "${CONTEXT}" || : "${1:?"Usage: ctx {work|personal|um|none}"}"
-    case "$1" in
+ctx_update (){
+    case "${1}" in
         w|work)
-            export HISTFILE="${HISTFILE%-*}" ## <- default HISTFILE
+            export HISTFILE="${HISTFILE%-*}-work"
             export KUBECONFIG=~/.kube/config
             export CONTEXT="work"
             ;;
@@ -32,16 +31,13 @@ ctx (){
             unset KUBECONFIG
             unset CONTEXT
             ;;
-        "")
-            echo "Current context: $CONTEXT"
-            return 0
-            ;;
-        *)
-            echo "Unknown context: $1"
-            return 1
-            ;;
     esac
     ctx_prompt
 }
+ctx (){
+    test -n "${1}" || : "${1:?"Usage: ctx {work|personal|um|none}"}"
+    test -z "${1}" && echo "Current context: $CONTEXT" && return
+    ctx_update "${1}"
+}
 
-ctx_prompt
+test -n "${CONTEXT}" && ctx_update "${CONTEXT}"
