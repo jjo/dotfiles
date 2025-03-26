@@ -175,7 +175,9 @@ let g:jsonnet_fmt_on_save = 1
 " nvim-ghost settings
 if has('nvim')
   let g:nvim_ghost_use_script = 1
-  let g:nvim_ghost_python_executable = '/usr/local/bin/python3'
+  if has('macunix') || has('mac')
+    let g:nvim_ghost_python_executable = '/usr/local/bin/python3'
+  endif
 endif
 
 " ALE settings
