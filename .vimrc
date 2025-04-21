@@ -74,6 +74,7 @@ Plugin 'cappyzawa/starlark.vim'        " Starlark support
 Plugin 'cappyzawa/ytt.vim'             " YTT support
 Plugin 'jjo/vim-promql'                " PromQL support
 Plugin 'buoto/gotests-vim'             " Go test generation
+Plugin 'Exafunction/codeium.vim'       " CodeIUM AI helper
 
 " Editor enhancements
 Plugin 'scrooloose/nerdtree'           " File explorer
@@ -108,10 +109,10 @@ if has('nvim')
   Plugin 'HakonHarnes/img-clip.nvim'
   Plugin 'zbirenbaum/copilot.lua'
   Plugin 'yetone/avante.nvim', {'branch': 'main', 'do': {-> avante#build()}, 'on': 'AvanteAsk'}
-  
+
   " Ghost support
   Plugin 'subnut/nvim-ghost.nvim'
-  
+
   set undodir=~/.vim/undo-nvim
   if !isdirectory($HOME."/.vim/undo-nvim")
       call mkdir($HOME."/.vim/undo-nvim", "p")
@@ -175,9 +176,11 @@ let g:jsonnet_fmt_on_save = 1
 " nvim-ghost settings
 if has('nvim')
   let g:nvim_ghost_use_script = 1
-  "if has('macunix') || has('mac')
+  if has('macunix') || has('mac')
     let g:nvim_ghost_python_executable = '/usr/local/bin/python3'
-  "endif
+  else
+    let g:nvim_ghost_python_executable = '/usr/bin/python3'
+  endif
 endif
 
 " ALE settings
@@ -254,7 +257,7 @@ augroup FileTypeSpecific
   autocmd BufNewFile,BufRead *.jsonnet,*.libsonnet set filetype=jsonnet sw=2 ts=2 sts=2 et si
   autocmd BufNewFile,BufRead *.cue set filetype=cue sw=4 ts=4 noet si
   autocmd BufNewFile,BufRead *.rego set filetype=rego sw=2 ts=2 et si
-  autocmd BufNewFile,BufRead *.promql,*.rules set filetype=promql sw=2 ts=2 sts=2 et si
+  autocmd BufNewFile,BufRead *.promql,*.rules set filetype=promql syntax=promql sw=2 ts=2 sts=2 et si
 
   " Arduino
   autocmd BufNewFile,BufRead *.pde set filetype=arduino
@@ -262,13 +265,13 @@ augroup FileTypeSpecific
 
   " Protocol buffers
   autocmd BufRead,BufNewFile *.proto set filetype=cpp ts=2 et sts=2 sw=2 ai
-  
+
   " SZL
   autocmd BufRead,BufNewFile *.szl set filetype=szl ts=2 et sts=2 sw=2 ai
-  
+
   " Mail
   autocmd FileType mail set spell tw=74
-  
+
   " Text files
   autocmd BufRead,BufNewFile *.txt,README*,TODO*,CHANGELOG,NOTES
     \ setlocal autoindent expandtab tabstop=8 softtabstop=2 shiftwidth=2 filetype=asciidoc

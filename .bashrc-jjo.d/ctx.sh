@@ -7,6 +7,7 @@ ctx_prompt() {
             PROMPT='${CONTEXT}|'"${PROMPT#*|}"
             ;;
     esac
+    test -n "${ZSH_VERSION}" && fc -R
 }
 
 ctx_update (){
