@@ -93,6 +93,9 @@ Plugin 'morhetz/gruvbox'               " Gruvbox theme
 Plugin 'sainnhe/sonokai'               " Sonokai theme
 Plugin 'junegunn/seoul256.vim'         " Seoul256 theme
 
+Plugin 'pasky/claude.vim'              " Anthropic AI plugin
+let g:claude_api_key = $CLAUDE_API_KEY
+
 " Neovim-specific plugins
 if has('nvim')
   Plugin 'glepnir/galaxyline.nvim', {'branch': 'main'}
