@@ -106,12 +106,12 @@ if has('nvim')
   Plugin 'glacambre/firenvim', {'do': {-> firenvim#install(0)}}
 
   " Avante and dependencies
-  Plugin 'stevearc/dressing.nvim'
-  Plugin 'MunifTanjim/nui.nvim'
-  Plugin 'nvim-tree/nvim-web-devicons'
-  Plugin 'HakonHarnes/img-clip.nvim'
-  Plugin 'zbirenbaum/copilot.lua'
-  Plugin 'yetone/avante.nvim', {'branch': 'main', 'do': {-> avante#build()}, 'on': 'AvanteAsk'}
+"  Plugin 'stevearc/dressing.nvim'
+"  Plugin 'MunifTanjim/nui.nvim'
+"  Plugin 'nvim-tree/nvim-web-devicons'
+"  Plugin 'HakonHarnes/img-clip.nvim'
+"  Plugin 'zbirenbaum/copilot.lua'
+"  Plugin 'yetone/avante.nvim', {'branch': 'main', 'do': {-> avante#build()}, 'on': 'AvanteAsk'}
 
   " Ghost support
   Plugin 'subnut/nvim-ghost.nvim'
@@ -120,6 +120,18 @@ if has('nvim')
   if !isdirectory($HOME."/.vim/undo-nvim")
       call mkdir($HOME."/.vim/undo-nvim", "p")
   endif
+  " Claude Code integration
+  "Plugin 'nvim-lua/plenary.nvim'
+  Plugin 'greggh/claude-code.nvim'
+  "lua require('claude-code').setup()
+  " Default key mappings for Claude Code (optional - plugin provides defaults)
+  " <leader>cc - Chat with Claude
+  " <leader>ce - Explain code
+  " <leader>cf - Fix code
+  " <leader>cr - Refactor code
+  " <leader>ct - Add tests
+  " <leader>cd - Add documentation
+
 endif
 
 call vundle#end()
@@ -213,6 +225,7 @@ inoremap <F2> <Esc>:NERDTreeToggle<CR>
 map <C-n> :cnext<CR>
 map <C-p> :cprev<CR>
 map <C-h> :GitGutterNextHunk<CR>
+map <C-k> :let g:gitgutter_diff_base=split(system('git merge-base master HEAD'))[0]<CR>
 
 " Build/test mappings
 map <Leader>k :make<CR>
