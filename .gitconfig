@@ -11,6 +11,8 @@
 	excludesfile = /home/jjo/.gitignore_global
 	# https://github.com/dandavison/delta
 	pager = delta
+	preloadindex = true
+	fscache = true
 
 [interactive]
 	diffFilter = delta --color-only
@@ -76,3 +78,5 @@
 # Goodies from https://blog.gitbutler.com/fosdem-git-talk/
 [rerere]
 	enabled = true
+[feature]
+	manyFiles = true
