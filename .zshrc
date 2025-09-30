@@ -114,3 +114,5 @@ autoload -U +X bashcompinit && bashcompinit
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 . $HOME/.bashrc.jjo
 . $HOME/.bashrc.grafana
+
+. "$HOME/.local/bin/env"

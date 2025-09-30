@@ -11,14 +11,8 @@
     "python": {
       "command": "pylsp",
       "rootPatterns": [".git/"],
-      "filetypes": ["py", "python"]
-    },
-    "terraform": {
-      "command": "terraform-ls",
-      "args": ["serve"],
-      "filetypes": ["terraform", "tf"],
-      "initializationOptions": {},
-      "settings": {}
+      "filetypes": ["py", "python"],
+      "pylsp.plugins.pyflakes.enabled": false
     }
   }
 }

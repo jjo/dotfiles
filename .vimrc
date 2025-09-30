@@ -226,6 +226,7 @@ map <C-n> :cnext<CR>
 map <C-p> :cprev<CR>
 map <C-h> :GitGutterNextHunk<CR>
 map <C-k> :let g:gitgutter_diff_base=split(system('git merge-base master HEAD'))[0]<CR>
+command -nargs=1 JJoGitGutterDiffBase :let g:gitgutter_diff_base=split(system('git merge-base <args> HEAD'))[0]
 
 " Build/test mappings
 map <Leader>k :make<CR>
