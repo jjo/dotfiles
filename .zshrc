@@ -115,4 +115,4 @@ autoload -U +X bashcompinit && bashcompinit
 . $HOME/.bashrc.jjo
 . $HOME/.bashrc.grafana
 
-. "$HOME/.local/bin/env"
+test -f "$HOME/.local/bin/env" && . "$HOME/.local/bin/env"
