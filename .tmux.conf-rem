@@ -39,6 +39,11 @@ unbind-key -n M-9
 unbind-key -n M--
 unbind-key -n M-,
 unbind r
+
+unbind-key -n M-j
+unbind-key -n M-k
+unbind-key -n M-j
+unbind-key -n M-k
 # status-es
 #set-option -g status off
 #
