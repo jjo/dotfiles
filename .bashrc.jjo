@@ -121,7 +121,7 @@ export WASMER_DIR="/home/jjo/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # Rust
-test -d $HOME/.cargo && . "$HOME/.cargo/env"
+test -f $HOME/.cargo/env && . "$HOME/.cargo/env"
 
 . $HOME/.zshrc-jjo.d/zoxide.sh
 . $HOME/.zshrc-jjo.d/gh.zsh
