@@ -74,11 +74,17 @@ Plugin 'cappyzawa/starlark.vim'        " Starlark support
 Plugin 'cappyzawa/ytt.vim'             " YTT support
 Plugin 'jjo/vim-promql'                " PromQL support
 Plugin 'buoto/gotests-vim'             " Go test generation
-Plugin 'Exafunction/codeium.vim'       " CodeIUM AI helper
+" Codeium: disable in nvim (using minuet-ai instead)
+if !has('nvim')
+  Plugin 'Exafunction/codeium.vim'       " CodeIUM AI helper
+endif
 
 " Editor enhancements
 Plugin 'scrooloose/nerdtree'           " File explorer
-Plugin 'ervandew/supertab'             " Tab completion
+" SuperTab: disable in nvim (using minuet-ai Tab instead)
+if !has('nvim')
+  Plugin 'ervandew/supertab'             " Tab completion
+endif
 Plugin 'airblade/vim-gitgutter'        " Git gutter
 Plugin 'mileszs/ack.vim'               " Search tool
 Plugin 'nathanaelkane/vim-indent-guides' " Indentation guides
@@ -93,8 +99,11 @@ Plugin 'morhetz/gruvbox'               " Gruvbox theme
 Plugin 'sainnhe/sonokai'               " Sonokai theme
 Plugin 'junegunn/seoul256.vim'         " Seoul256 theme
 
-Plugin 'pasky/claude.vim'              " Anthropic AI plugin
-let g:claude_api_key = $CLAUDE_API_KEY
+" claude.vim: disable in nvim (using avante instead)
+if !has('nvim')
+  Plugin 'pasky/claude.vim'              " Anthropic AI plugin
+  let g:claude_api_key = $CLAUDE_API_KEY
+endif
 
 " Neovim-specific plugins
 if has('nvim')
@@ -120,17 +129,8 @@ if has('nvim')
   if !isdirectory($HOME."/.vim/undo-nvim")
       call mkdir($HOME."/.vim/undo-nvim", "p")
   endif
-  " Claude Code integration
-  "Plugin 'nvim-lua/plenary.nvim'
-  Plugin 'greggh/claude-code.nvim'
-  "lua require('claude-code').setup()
-  " Default key mappings for Claude Code (optional - plugin provides defaults)
-  " <leader>cc - Chat with Claude
-  " <leader>ce - Explain code
-  " <leader>cf - Fix code
-  " <leader>cr - Refactor code
-  " <leader>ct - Add tests
-  " <leader>cd - Add documentation
+  " Claude Code integration (disabled - using avante.nvim via lazy.nvim)
+  " Plugin 'greggh/claude-code.nvim'
 
 endif
 
@@ -165,6 +165,13 @@ endfunction
 " Ack.vim settings
 " Use silversearch-ag "ag" instead of perl'ian ack-grep
 let g:ackprg = 'ag --vimgrep'
+
+" Codeium settings (vim only, nvim uses minuet-ai)
+if !has('nvim')
+  let g:codeium_filetypes = {
+        \ "markdown": v:false,
+        \ }
+endif
 
 " NERDTree settings
 let g:NERDTreeShowHidden = 1
