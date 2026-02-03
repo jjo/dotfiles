@@ -69,53 +69,10 @@ require("lazy").setup({
         },
       },
       behaviour = {
-        auto_suggestions = false,  -- Using minuet-ai for this
-        auto_set_keymaps = true,
-      },
-      mappings = {
-        ask = "<leader>aa",
-        edit = "<leader>ae",
-        refresh = "<leader>ar",
-        toggle = {
-          default = "<leader>at",
-          debug = "<leader>ad",
-          hint = "<leader>ah",
-        },
+        auto_suggestions = false,  -- Using Codeium/Copilot instead
+        auto_set_keymaps = false,  -- Using explicit keymaps below
       },
     },
-  },
-
-  -- Minuet-AI - Inline completions via OpenRouter/Claude
-  {
-    "milanglacier/minuet-ai.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("minuet").setup({
-        provider = "claude",
-        provider_options = {
-          claude = {
-            api_key_name = "ANTHROPIC_API_KEY",  -- Fixed: was api_key
-            model = "claude-3-5-haiku-20241022",  -- Much faster than Sonnet
-            max_tokens = 256,  -- Reduced for faster response
-          },
-        },
-        virtualtext = {
-          auto_trigger_ft = { "*" },  -- Auto-trigger for all filetypes
-          keymap = {
-            accept = "<Tab>",
-            accept_line = "<S-Tab>",
-            prev = "<A-[>",
-            next = "<A-]>",
-            dismiss = "<C-e>",  -- Changed: let Esc/Ctrl-[ exit insert mode normally
-          },
-        },
-        -- More aggressive timing for responsiveness
-        throttle = 500,
-        debounce = 300,
-      })
-    end,
   },
 
   -- Dressing.nvim for better UI
@@ -143,22 +100,14 @@ require("lazy").setup({
 -- =============================================================================
 -- KEYMAPS FOR AI
 -- =============================================================================
--- Minuet-AI manual trigger
-vim.keymap.set('i', '<A-m>', function()
-  require('minuet').make_request()
-end, { desc = "Trigger Minuet AI completion" })
-
--- Esc dismisses completion AND exits insert mode
-vim.keymap.set('i', '<Esc>', function()
-  local vt = require('minuet.virtualtext')
-  if vt and vt.action and vt.action.dismiss then
-    vt.action.dismiss()
-  end
-  vim.cmd('stopinsert')
-end, { desc = "Dismiss completion and exit insert mode" })
-
--- Avante quick access
+-- Avante keymaps (explicit to avoid 'a' append conflict)
+vim.keymap.set('n', '<leader>aa', '<cmd>AvanteAsk<cr>', { desc = "Avante Ask" })
+vim.keymap.set('v', '<leader>aa', '<cmd>AvanteAsk<cr>', { desc = "Avante Ask" })
+vim.keymap.set('n', '<leader>ae', '<cmd>AvanteEdit<cr>', { desc = "Avante Edit" })
+vim.keymap.set('v', '<leader>ae', '<cmd>AvanteEdit<cr>', { desc = "Avante Edit" })
 vim.keymap.set('n', '<leader>ac', '<cmd>AvanteChat<cr>', { desc = "Avante Chat" })
+vim.keymap.set('n', '<leader>ar', '<cmd>AvanteRefresh<cr>', { desc = "Avante Refresh" })
+vim.keymap.set('n', '<leader>at', '<cmd>AvanteToggle<cr>', { desc = "Avante Toggle" })
 
 -- =============================================================================
 -- TERRAFORM LSP WORKAROUND (kept from original)

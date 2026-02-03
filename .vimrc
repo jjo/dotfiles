@@ -74,17 +74,11 @@ Plugin 'cappyzawa/starlark.vim'        " Starlark support
 Plugin 'cappyzawa/ytt.vim'             " YTT support
 Plugin 'jjo/vim-promql'                " PromQL support
 Plugin 'buoto/gotests-vim'             " Go test generation
-" Codeium: disable in nvim (using minuet-ai instead)
-if !has('nvim')
-  Plugin 'Exafunction/codeium.vim'       " CodeIUM AI helper
-endif
+Plugin 'Exafunction/codeium.vim'       " Codeium AI helper
 
 " Editor enhancements
 Plugin 'scrooloose/nerdtree'           " File explorer
-" SuperTab: disable in nvim (using minuet-ai Tab instead)
-if !has('nvim')
-  Plugin 'ervandew/supertab'             " Tab completion
-endif
+Plugin 'ervandew/supertab'             " Tab completion
 Plugin 'airblade/vim-gitgutter'        " Git gutter
 Plugin 'mileszs/ack.vim'               " Search tool
 Plugin 'nathanaelkane/vim-indent-guides' " Indentation guides
@@ -166,12 +160,10 @@ endfunction
 " Use silversearch-ag "ag" instead of perl'ian ack-grep
 let g:ackprg = 'ag --vimgrep'
 
-" Codeium settings (vim only, nvim uses minuet-ai)
-if !has('nvim')
-  let g:codeium_filetypes = {
-        \ "markdown": v:false,
-        \ }
-endif
+" Codeium settings
+let g:codeium_filetypes = {
+      \ "markdown": v:false,
+      \ }
 
 " NERDTree settings
 let g:NERDTreeShowHidden = 1
