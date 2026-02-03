@@ -96,9 +96,9 @@ require("lazy").setup({
         provider = "claude",
         provider_options = {
           claude = {
-            api_key = "ANTHROPIC_API_KEY",
-            model = "claude-sonnet-4-20250514",
-            max_tokens = 512,
+            api_key_name = "ANTHROPIC_API_KEY",  -- Fixed: was api_key
+            model = "claude-3-5-haiku-20241022",  -- Much faster than Sonnet
+            max_tokens = 256,  -- Reduced for faster response
           },
         },
         virtualtext = {
@@ -111,9 +111,9 @@ require("lazy").setup({
             dismiss = "<Esc>",
           },
         },
-        -- Throttle to avoid excessive API calls
-        throttle = 1500,
-        debounce = 600,
+        -- More aggressive timing for responsiveness
+        throttle = 500,
+        debounce = 300,
       })
     end,
   },
