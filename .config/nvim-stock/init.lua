@@ -108,7 +108,7 @@ require("lazy").setup({
             accept_line = "<S-Tab>",
             prev = "<A-[>",
             next = "<A-]>",
-            dismiss = "<Esc>",
+            dismiss = "<C-e>",  -- Changed: let Esc/Ctrl-[ exit insert mode normally
           },
         },
         -- More aggressive timing for responsiveness
@@ -147,6 +147,15 @@ require("lazy").setup({
 vim.keymap.set('i', '<A-m>', function()
   require('minuet').make_request()
 end, { desc = "Trigger Minuet AI completion" })
+
+-- Esc dismisses completion AND exits insert mode
+vim.keymap.set('i', '<Esc>', function()
+  local vt = require('minuet.virtualtext')
+  if vt and vt.action and vt.action.dismiss then
+    vt.action.dismiss()
+  end
+  vim.cmd('stopinsert')
+end, { desc = "Dismiss completion and exit insert mode" })
 
 -- Avante quick access
 vim.keymap.set('n', '<leader>ac', '<cmd>AvanteChat<cr>', { desc = "Avante Chat" })
