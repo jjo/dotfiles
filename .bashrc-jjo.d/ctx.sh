@@ -1,12 +1,15 @@
 ctx_prompt() {
-    case "${CONTEXT}" in
-        none|"")
-            PROMPT="${PROMPT#*|}"
-            ;;
-        *)
-            PROMPT='${CONTEXT}|'"${PROMPT#*|}"
-            ;;
-    esac
+    # If starship is active, it handles CONTEXT via env_var module
+    if ! type starship >/dev/null 2>&1; then
+        case "${CONTEXT}" in
+            none|"")
+                PROMPT="${PROMPT#*|}"
+                ;;
+            *)
+                PROMPT='${CONTEXT}|'"${PROMPT#*|}"
+                ;;
+        esac
+    fi
     test -n "${ZSH_VERSION}" && fc -R
 }
 
