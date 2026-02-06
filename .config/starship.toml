@@ -58,7 +58,8 @@ CentOS = ""
 Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
-Pop = ""
+#Pop = ""
+Pop = "󰌽"
 
 [username]
 show_always = true
