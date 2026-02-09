@@ -80,3 +80,5 @@
 	enabled = true
 [feature]
 	manyFiles = true
+[init]
+	defaultBranch = main
