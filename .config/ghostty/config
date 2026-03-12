@@ -1,0 +1,20 @@
+# tmux compatibility
+# Send ESC+key for Option combos so tmux M- bindings work:
+#   M-0..9, M-q/w/e/r/t/y (window select)
+#   M-j/k (next/prev window), M-p/n (pane nav)
+#   M-,  (copy-mode), M-- (last-window)
+macos-option-as-alt = true
+
+# Match iTerm2 terminal type (xterm-256color)
+term = xterm-256color
+
+# Match tmux history-limit (set -g history-limit 100000)
+scrollback-limit = 100000
+
+# Unbind Ghostty's default alt+arrow bindings so they pass through to tmux/apps
+keybind = alt+arrow_left=unbind
+keybind = alt+arrow_right=unbind
+
+# Unbind alt+up/down as well (pass through to tmux/vim/etc)
+keybind = alt+arrow_up=unbind
+keybind = alt+arrow_down=unbind
