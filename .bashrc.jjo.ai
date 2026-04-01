@@ -1,4 +1,26 @@
-# forge provider switching aliases
-alias forge-claude='forge config set provider anthropic && forge config set model claude-opus-4-6'
-alias forge-alibaba='forge config set provider alibaba_coding && forge config set model qwen3-coder-next'
-alias forge-um='forge config set provider openai_compatible && forge config set model gpt-oss-20b'
+# forge provider switching functions
+# Patches token_threshold in .forge.toml to match model context limits
+_forge_set_token_threshold() {
+  sed -i "s/^token_threshold = .*/token_threshold = $1/" ~/forge/.forge.toml
+}
+
+# unalias leftovers from previous alias-based version
+unalias forge-claude forge-alibaba forge-um 2>/dev/null
+
+function forge-claude {
+  forge config set provider anthropic
+  forge config set model claude-opus-4-6
+  _forge_set_token_threshold 150000
+}
+
+function forge-alibaba {
+  forge config set provider alibaba_coding
+  forge config set model qwen3-coder-next
+  _forge_set_token_threshold 100000
+}
+
+function forge-um {
+  forge config set provider openai_compatible
+  forge config set model gpt-oss-20b
+  _forge_set_token_threshold 16000
+}
