@@ -1,0 +1,4 @@
+# forge provider switching aliases
+alias forge-claude='forge config set provider anthropic && forge config set model claude-opus-4-6'
+alias forge-alibaba='forge config set provider alibaba_coding && forge config set model qwen3-coder-next'
+alias forge-um='forge config set provider openai_compatible && forge config set model gpt-oss-20b'
