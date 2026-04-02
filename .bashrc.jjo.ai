@@ -19,6 +19,12 @@ function forge-alibaba {
   _forge_set_token_threshold 100000
 }
 
+function forge-openai {
+  forge config set provider openai
+  forge config set model gpt-5.3-codex
+  _forge_set_token_threshold 150000
+}
+
 function forge-um {
   forge config set provider openai_compatible
   forge config set model gpt-oss-20b
