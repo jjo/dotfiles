@@ -1,3 +1,5 @@
+# Added by ForgeCode installer
+export PATH="/home/jjo/.local/bin:$PATH"
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -128,3 +130,5 @@ test -f ~/.bashrc.private && . ~/.bashrc.private
 complete -C /home/linuxbrew/.linuxbrew/Cellar/grizzly/0.6.1/bin/grr grr
 
 . "$HOME/.local/bin/env"
+
+alias claude-mem='/home/jjo/.bun/bin/bun "/home/jjo/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'

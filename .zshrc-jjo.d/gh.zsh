@@ -1,1 +1,1 @@
-source <(gh copilot alias -- zsh)
+#source <(gh copilot alias -- zsh)

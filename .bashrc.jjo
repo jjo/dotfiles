@@ -66,6 +66,7 @@ alias yless='jless --yaml'
 
 source ~/.bashrc.golang
 source ~/.bashrc.grafana
+source ~/.bashrc.jjo.ai
 
 # `kubectl` _and_ `k` completion
 which kubectl >& /dev/null && test -n "${ZSH_VERSION}" && {

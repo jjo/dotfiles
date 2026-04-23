@@ -1,3 +1,5 @@
+# Added by ForgeCode installer
+export PATH="/home/jjo/.local/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -70,7 +72,10 @@ ZSH_THEME="robbyrussell"
 plugins=(git direnv starship)
 
 . $HOME/.zshrc-jjo.d/plugins.zsh
-source $ZSH/oh-my-zsh.sh
+if [[ -z "$_OMZ_LOADED" ]]; then
+    source $ZSH/oh-my-zsh.sh
+    _OMZ_LOADED=1
+fi
 unsetopt autocd
 
 # User configuration
@@ -134,12 +139,37 @@ if [[ -z "$_FORGE_PLUGIN_LOADED" ]]; then
     eval "$(forge zsh plugin)"
 fi
 
-# Load forge shell theme (prompt with AI context) if not already loaded
+# Load forge shell theme, then hoist forge info to its own line above
+# the p10k prompt so it never lands in copy-pasted commands.
 if [[ -z "$_FORGE_THEME_LOADED" ]]; then
     eval "$(forge zsh theme)"
+    RPROMPT=''
 fi
+# Print forge info on its own line above prompt. Defined outside the
+# guard so re-sources replace (not stack) the function. Hook added once.
+autoload -Uz add-zsh-hook
+_forge_print_line() {
+    [[ -n "$_FORGE_LINE_OFF" ]] && return
+    local info="$(_forge_prompt_info 2>/dev/null)"
+    [[ -n "$info" ]] && print -P -- "$info"
+}
+# Strip any prior forge precmd variants that may have stacked across re-sources
+precmd_functions=(${precmd_functions:#_forge_*})
+add-zsh-hook precmd _forge_print_line
+alias forge-line-off='_FORGE_LINE_OFF=1'
+alias forge-line-on='unset _FORGE_LINE_OFF'
+alias forge-line-toggle='[[ -n $_FORGE_LINE_OFF ]] && unset _FORGE_LINE_OFF || _FORGE_LINE_OFF=1'
 
 # Editor for editing prompts (set during setup)
 # To change: update FORGE_EDITOR or remove to use $EDITOR
 export FORGE_EDITOR="nvim"
 # <<< forge initialize <<<
+
+# bun completions
+[ -s "/home/jjo/.bun/_bun" ] && source "/home/jjo/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+alias claude-mem='/home/jjo/.bun/bin/bun "/home/jjo/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'

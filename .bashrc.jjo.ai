@@ -8,25 +8,36 @@ _forge_set_token_threshold() {
 unalias forge-claude forge-alibaba forge-um 2>/dev/null
 
 function forge-claude {
-  forge config set provider anthropic
   forge config set model claude-opus-4-6
+  forge config set provider anthropic
+  unset OLLAMA_HOST
   _forge_set_token_threshold 150000
 }
 
 function forge-alibaba {
-  forge config set provider alibaba_coding
   forge config set model qwen3-coder-next
+  forge config set provider alibaba_coding
+  unset OLLAMA_HOST
   _forge_set_token_threshold 100000
 }
 
 function forge-openai {
-  forge config set provider openai
   forge config set model gpt-5.3-codex
+  forge config set provider openai
+  unset OLLAMA_HOST
   _forge_set_token_threshold 150000
 }
 
 function forge-um {
+  forge config set model gemma4-26b
   forge config set provider openai_compatible
-  forge config set model gpt-oss-20b
+  unset OLLAMA_HOST
   _forge_set_token_threshold 16000
+}
+
+function forge-ollama {
+  export OLLAMA_HOST=http://localhost:11434
+  forge config set model gemma4-26b-16g
+  forge config set provider ollama
+  _forge_set_token_threshold 8000
 }
