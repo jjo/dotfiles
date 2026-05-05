@@ -1,11 +1,13 @@
 # tmux compatibility
-# Send ESC+key for Option combos so tmux M- bindings work:
+# Send ESC+key for Option combos so tmux M- bindings work (macOS only;
+# Linux ghostty already sends ESC+key for Alt by default):
 #   M-0..9, M-q/w/e/r/t/y (window select)
 #   M-j/k (next/prev window), M-p/n (pane nav)
 #   M-,  (copy-mode), M-- (last-window)
 macos-option-as-alt = true
 
-# Match iTerm2 terminal type (xterm-256color)
+# xterm-256color: safe fallback when ssh'ing to hosts without xterm-ghostty
+# terminfo. Truecolor is restored via tmux terminal-overrides (RGB).
 term = xterm-256color
 
 # Match tmux history-limit (set -g history-limit 100000)
