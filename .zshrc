@@ -1,3 +1,4 @@
+# Added by ForgeCode installer
 export PATH="/home/jjo/.local/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -75,6 +76,7 @@ if [[ -z "$_OMZ_LOADED" ]]; then
     source $ZSH/oh-my-zsh.sh
     _OMZ_LOADED=1
 fi
+. $HOME/.zshrc-jjo.d/colors.zsh
 unsetopt autocd
 
 # User configuration
