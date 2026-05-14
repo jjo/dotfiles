@@ -20,3 +20,23 @@ keybind = alt+arrow_right=unbind
 # Unbind alt+up/down as well (pass through to tmux/vim/etc)
 keybind = alt+arrow_up=unbind
 keybind = alt+arrow_down=unbind
+
+# Tab switching: Ctrl+Shift+<N>
+keybind = alt+one=unbind
+keybind = alt+two=unbind
+keybind = alt+three=unbind
+keybind = alt+four=unbind
+keybind = alt+five=unbind
+keybind = alt+six=unbind
+keybind = alt+seven=unbind
+keybind = alt+eight=unbind
+keybind = alt+nine=unbind
+keybind = ctrl+shift+one=goto_tab:1
+keybind = ctrl+shift+two=goto_tab:2
+keybind = ctrl+shift+three=goto_tab:3
+keybind = ctrl+shift+four=goto_tab:4
+keybind = ctrl+shift+five=goto_tab:5
+keybind = ctrl+shift+six=goto_tab:6
+keybind = ctrl+shift+seven=goto_tab:7
+keybind = ctrl+shift+eight=goto_tab:8
+keybind = ctrl+shift+nine=last_tab
