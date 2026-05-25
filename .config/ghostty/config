@@ -40,3 +40,8 @@ keybind = ctrl+shift+six=goto_tab:6
 keybind = ctrl+shift+seven=goto_tab:7
 keybind = ctrl+shift+eight=goto_tab:8
 keybind = ctrl+shift+nine=last_tab
+
+
+copy-on-select = clipboard
+clipboard-read = allow
+clipboard-write = allow
