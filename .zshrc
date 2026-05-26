@@ -77,6 +77,7 @@ if [[ -z "$_OMZ_LOADED" ]]; then
     _OMZ_LOADED=1
 fi
 . $HOME/.zshrc-jjo.d/colors.zsh
+. $HOME/.zshrc-jjo.d/custom.zsh
 unsetopt autocd
 
 # User configuration
