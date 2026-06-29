@@ -1,0 +1,14 @@
+onboarding = false
+
+[theme]
+name = "gruvbox"
+
+[experimental]
+pane_history = false
+
+[ui]
+agent_panel_scope = "all"
+
+[keys]
+switch_tab = "prefix+shift+1..9"
+focus_agent = "prefix+1..9"
