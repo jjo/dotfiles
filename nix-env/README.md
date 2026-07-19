@@ -12,6 +12,62 @@ and macOS Intel (x86_64-darwin). One source of truth: `home.nix` + `flake.nix`.
 - `home-manager switch` is idempotent and atomic; failed builds don't disturb the
   running generation.
 
+## 0) Initial setup (one-time per host)
+
+### Step 0a — remove imperative nix profile entries that conflict
+
+Check what's in your profile:
+
+```
+nix profile list
+nix profile remove <store-path-or-name>
+```
+
+Historically conflict-prone: `nix-env`, `openstackclient`, `rancher`, `rtk` (now
+inside `home.nix`), and any stale `home-manager-path` entries.
+
+### Step 0b — bootstrap home-manager with a one-shot `nix run`
+
+```
+cd ~/nix-env
+git add -f home.nix                    # ensure flake sees it
+nix run github:nix-community/home-manager -- switch --flake .#jjo@x86_64-linux
+```
+
+On the Mac: `.#jjo@x86_64-darwin`.
+
+This is the **only** manual `nix run` you'll ever need — the `switch` installs
+`programs.home-manager.enable = true` onto your PATH, so every future switch is
+just:
+
+```
+cd ~/nix-env && git add home.nix && home-manager switch --flake .#jjo@x86_64-linux
+```
+
+After switch, confirm it worked:
+
+```
+hash -r                                # or exec -l $SHELL
+home-manager --version                 # should print version
+for b in delta argo yt-dlp openstack; do command -v $b && echo OK $b; done
+```
+
+### Step 0c — (macOS only) ensure home-manager CLI lands on PATH
+
+macOS doesn't use `programs.home-manager.enable` the same way. If `home-manager`
+doesn't appear after the first switch, re-run once with `nix run` — it'll stick
+after the second switch.
+
+### Step 0d — commit and push (lock in the flake)
+
+```
+git add flake.nix home.nix README.md flake.lock
+git commit -m "nix-env: home-manager migration (jjo)"
+git push
+```
+
+Then `git pull && home-manager switch` on o.jjo.us.to and the Mac.
+
 ## 1) Add / remove a package
 
 All edits happen in `home.nix`'s `home.packages = [ ... ]` list.
