@@ -126,8 +126,6 @@ esac
 . ~/.bashrc.jjo
 test -f ~/.bashrc.private && . ~/.bashrc.private
 
-complete -C /home/linuxbrew/.linuxbrew/Cellar/grizzly/0.6.1/bin/grr grr
-
 . "$HOME/.local/bin/env"
 
 alias claude-mem='/home/jjo/.bun/bin/bun "/home/jjo/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'

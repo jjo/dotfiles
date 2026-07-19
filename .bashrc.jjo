@@ -2,6 +2,10 @@ export PATH=$PATH:$HOME/bin
 # WTF nano sh*t defaults
 export EDITOR=/usr/bin/vim
 
+# nix
+test -e /etc/profile.d/nix.sh && . /etc/profile.d/nix.sh
+test -e ~/.nix-profile/etc/profile.d/nix.sh && . ~/.nix-profile/etc/profile.d/nix.sh
+
 # macosx/linux diffs
 case $(uname -s) in
     Darwin)
@@ -70,19 +74,11 @@ source ~/.bashrc.jjo.ai
 
 # `kubectl` _and_ `k` completion
 which kubectl >& /dev/null && test -n "${ZSH_VERSION}" && {
-    # Set KUBECONFIG to /dev/null since otherwise the completion command
-    # attempts to make network connections which results in it taking 1+
-    # seconds instead of a few milliseconds. The resulting completion
-    # code is nearly identical in both cases with only some superficial
-    # differences.
-    # shellcheck source=/dev/null
-	source <(KUBECONFIG=/dev/null kubectl completion "${SHELL##*/}" |sed '/^compdef/s/ kubectl/ kubectl k/')
-	alias k='kubectl'
+    alias k=kubectl
 }
 
-which stern >& /dev/null && {
-    source <(stern --completion "${SHELL##*/}")
-	alias k='kubectl'
+which stern >& /dev/null && test -n "${ZSH_VERSION}" && {
+    source <(stern --completion zsh)
 }
 
 # kube-ps1
@@ -108,14 +104,8 @@ test -d ~/.terraform.versions && complete -C $(ls -l1 ~/.terraform.versions/*.*.
 # tanka
 TKBIN=$(which tk 2>/dev/null) && complete -C "${TKBIN}" tk
 
-# nix
-test -e ~/.nix-profile/etc/profile.d/nix.sh && . ~/.nix-profile/etc/profile.d/nix.sh
-
 # ctx
 . ~/.bashrc-jjo.d/ctx.sh
-
-# minio
-test -d ${HOMEBREW_CELLAR}/minio-mc && complete -o nospace -C ${HOMEBREW_CELLAR}/minio-mc/*/bin/mc mc
 
 # Wasmer
 export WASMER_DIR="/home/jjo/.wasmer"
@@ -133,5 +123,4 @@ export PATH="$HOME/bin/overrides/:$HOME/bin/:$HOME/.local/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
 
-test -d ${HOMEBREW_CELLAR}/grizzly && complete -o nospace -C ${HOMEBREW_CELLAR}/grizzly/*/bin/grr grr
 export ZSH_HIGHLIGHT_STYLES[comment]=fg=245

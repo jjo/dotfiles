@@ -4,15 +4,23 @@
   inputs = {
     # Using the standard rolling unstable channel ensures it downloads successfully
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, home-manager }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       # `hf` is only shipped as a Python package (python3Packages.huggingface-hub);
       # its mainProgram is "hf", so wrap it as a runnable derivation.
       hf = pkgs.python3Packages.huggingface-hub;
+      # helper: build a home-manager config for any system
+      mkHM = system':
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system'};
+          modules = [ ./home.nix ];
+        };
     in {
       packages.${system} = rec {
         default = pkgs.buildEnv {
@@ -122,7 +130,7 @@
             wasmtime
             yamllint
             yt-dlp             # youtube-dl is abandoned/insecure; yt-dlp is the maintained, CLI-compatible fork
-            yq-go
+            (lib.hiPrio yq-go)
             zizmor
             zk
             zoxide
@@ -157,8 +165,11 @@
             #   src = pkgs.fetchFromGitHub { owner = "wasmCloud"; repo = "wash"; rev = "v${version}"; sha256 = pkgs.lib.fakeHash; };
             #   vendorHash = pkgs.lib.fakeHash;
             # })
-          ];
-        };
+        ];
+      };
+      };
+      homeConfigurations = {
+        "jjo@x86_64-linux" = mkHM "x86_64-linux";
       };
     };
 }

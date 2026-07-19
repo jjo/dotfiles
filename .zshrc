@@ -132,3 +132,13 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 alias claude-mem='/home/jjo/.bun/bin/bun "/home/jjo/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
+
+# kubectl k alias completion (after final compinit - YOLO)
+alias k=kubectl
+compdef k=kubectl 2>/dev/null || true

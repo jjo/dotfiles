@@ -31,6 +31,16 @@ keybind = alt+six=unbind
 keybind = alt+seven=unbind
 keybind = alt+eight=unbind
 keybind = alt+nine=unbind
+# Also unbind alt+shift+<N> (Alt+! through Alt+)) so they pass through to tmux
+keybind = shift+alt+one=unbind
+keybind = shift+alt+two=unbind
+keybind = shift+alt+three=unbind
+keybind = shift+alt+four=unbind
+keybind = shift+alt+five=unbind
+keybind = shift+alt+six=unbind
+keybind = shift+alt+seven=unbind
+keybind = shift+alt+eight=unbind
+keybind = shift+alt+nine=unbind
 keybind = ctrl+shift+one=goto_tab:1
 keybind = ctrl+shift+two=goto_tab:2
 keybind = ctrl+shift+three=goto_tab:3

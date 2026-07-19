@@ -2,3 +2,5 @@
 *.swp
 *~
 .ropeproject
+
+**/.claude/settings.local.json

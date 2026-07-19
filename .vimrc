@@ -40,17 +40,16 @@ set smartcase                 " Override ignorecase when search includes upperca
 set autoindent                " Auto indent
 set smartindent               " Smart indent
 set expandtab                 " Use spaces instead of tabs
-set shiftwidth=2              " Default to 4 spaces for indentation
-set tabstop=2                 " Default to 4 spaces for tabs
-set softtabstop=2             " Default to 4 spaces when pressing tab
+set shiftwidth=2              " Default to 2 spaces for indentation
+set tabstop=2                 " Default to 2 spaces for tabs
+set softtabstop=2             " Default to 2 spaces when pressing tab
 
 " Appearance
 set bg=dark                   " Dark background
-set termguicolors             " True color support
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
+  set termguicolors           " True color support (guarded for minimal builds)
 endif
 
 " =============================================================================
@@ -326,7 +325,11 @@ endfunction
 " COLOR SCHEME AND UI
 " =============================================================================
 " Choose one of the installed color schemes:
-colorscheme gruvbox     " Options: gruvbox, monokai, sonokai, seoul256
+try
+  colorscheme gruvbox     " Options: gruvbox, monokai, sonokai, seoul256
+catch
+  colorscheme default
+endtry
 
 " Make line numbers more visible
 highlight LineNr ctermfg=grey guifg=grey
