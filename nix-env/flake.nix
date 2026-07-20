@@ -16,8 +16,8 @@
       };
     in {
       homeConfigurations = {
-        "jjo@x86_64-linux" = mkHM nixpkgs.legacyPackages.x86_64-linux;
-        "jjo@mac"          = mkHM nixpkgs-darwin.legacyPackages.x86_64-darwin;
+        "jjo@linux" = mkHM nixpkgs.legacyPackages.x86_64-linux;
+        "jjo@mac"   = mkHM nixpkgs-darwin.legacyPackages.x86_64-darwin;
       };
     };
 }

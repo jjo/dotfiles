@@ -31,17 +31,17 @@ inside `home.nix`), and any stale `home-manager-path` entries.
 ```
 cd ~/nix-env
 git add -f home.nix                    # ensure flake sees it
-nix run github:nix-community/home-manager -- switch --flake .#jjo@x86_64-linux
+nix run github:nix-community/home-manager -- switch --flake .#jjo@linux
 ```
 
-On the Mac: `.#jjo@x86_64-darwin`.
+On the Mac: `.#jjo@mac`.
 
 This is the **only** manual `nix run` you'll ever need — the `switch` installs
 `programs.home-manager.enable = true` onto your PATH, so every future switch is
 just:
 
 ```
-cd ~/nix-env && git add home.nix && home-manager switch --flake .#jjo@x86_64-linux
+cd ~/nix-env && git add home.nix && home-manager switch --flake .#jjo@linux
 ```
 
 After switch, confirm it worked:
@@ -78,10 +78,10 @@ Remove: delete the line.
 ```
 cd ~/nix-env
 git add home.nix                                  # flake reads only git-tracked files
-home-manager switch --flake .#jjo@x86_64-linux    # builds + activates; idempotent
+home-manager switch --flake .#jjo@linux    # builds + activates; idempotent
 ```
 
-On the Mac: `--flake .#jjo@x86_64-darwin`.
+On the Mac: `--flake .#jjo@mac`.
 
 `switch` rebuilds and atomically swaps the generation. If a build fails, the
 current generation is untouched — nothing breaks.
@@ -100,7 +100,7 @@ bumping the lock, then switching.
 ```
 cd ~/nix-env
 nix flake update                                  # re-pins nixpkgs AND home-manager
-home-manager switch --flake .#jjo@x86_64-linux
+home-manager switch --flake .#jjo@linux
 ```
 
 `nix flake update` bumps to the newest commit of `nixos-unstable`. Home-manager
@@ -143,7 +143,7 @@ nix store diff-closures ~/.local/state/nix/profiles/home-manager \
 
 ### c) Inspect a package's version/source
 ```
-nix eval .#homeConfigurations."jjo@x86_64-linux".config.home.packages \
+nix eval .#homeConfigurations."jjo@linux".config.home.packages \
   --apply 'p: map (x: {n=x.name; v=x.version;}) p' | jq
 nix flake metadata github:nixos/nixpkgs/$(jq -r .nodes.nixpkgs.locked.rev flake.lock)
 ```
@@ -172,7 +172,7 @@ Add `./overlays/nixpkgs.nix` to `modules` in the flake's `mkHM`.
 ### f) Two-machine sync (local + o.jjo.us.to + Mac)
 Same repo on all boxes. Edit locally → commit → push. On each remote:
 ```
-cd ~/nix-env && git pull && home-manager switch --flake .#jjo@x86_64-linux
+cd ~/nix-env && git pull && home-manager switch --flake .#jjo@linux
 ```
 
 Host-specific packages via a `hosts/<hostname>.nix` module:
@@ -199,16 +199,16 @@ Same `switch` applies. macOS uses `launchd` agents (`launchd.agents.<name>`).
 
 ### i) Verify nothing dropped after `switch`
 ```
-home-manager switch --flake .#jjo@x86_64-linux --verbose 2>&1 | grep -E 'removed|added|changed'
+home-manager switch --flake .#jjo@linux --verbose 2>&1 | grep -E 'removed|added|changed'
 ```
 List of removed/added/changed packages prints; verify nothing unexpected was dropped.
 
 ### j) Preview before switching
 ```
-home-manager build --flake .#jjo@x86_64-linux     # build only; doesn't activate
+home-manager build --flake .#jjo@linux     # build only; doesn't activate
 nvd diff ~/.local/state/nix/profiles/home-manager ./result
 # then if happy:
-home-manager switch --flake .#jjo@x86_64-linux
+home-manager switch --flake .#jjo@linux
 ```
 (`nvd` is a tool: `nix profile install nixpkgs#nvd` once.)
 
@@ -237,10 +237,10 @@ nix flake show                                    # see all outputs
 
 ```bash
 # Linux (local + o.jjo.us.to)
-nix run github:nix-community/home-manager -- switch --flake ~/nix-env#jjo@x86_64-linux
+nix run github:nix-community/home-manager -- switch --flake ~/nix-env#jjo@linux
 
 # macOS (Intel)
-nix run github:nix-community/home-manager -- switch --flake ~/nix-env#jjo@x86_64-darwin
+nix run github:nix-community/home-manager -- switch --flake ~/nix-env#jjo@mac
 ```
 
 Pre-flight: remove any imperative `nix profile` entries that are now in `home.nix`
