@@ -97,6 +97,7 @@ in
       markdownlint-cli
       opentofu
       openstackclient   # python-openstackclient
+      pack              # buildpacks CLI
       pnpm
       prometheus-node-exporter  # node_exporter
       rancher           # rancher CLI
