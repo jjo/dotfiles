@@ -4,7 +4,7 @@ let
   maybe = name: lib.optionals (builtins.hasAttr name pkgs) [ (builtins.getAttr name pkgs) ];
   # Linux-only packages (unavailable/broken on x86_64-darwin)
   linuxOnly = lib.optionals pkgs.stdenv.isLinux (with pkgs; [
-    calicoctl nerdctl opencode goofys
+    calicoctl nerdctl opencode goofys foundry emscripten devcontainer
   ]);
 in
 {
@@ -47,21 +47,19 @@ in
       azure-cli
       bash-language-server
       buildkit           # buildctl / buildkitd
+      btop
       cilium-cli
       cog
       colima
       lima               # colima dependency
       conftest
-      devcontainer
       doctl
       drone-cli
       duckdb
-      emscripten
       eslint
       eza
       fish
       fluxcd             # flux
-      foundry
       fx
       git
       gitleaks
