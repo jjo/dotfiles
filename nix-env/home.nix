@@ -4,7 +4,7 @@ let
   maybe = name: lib.optionals (builtins.hasAttr name pkgs) [ (builtins.getAttr name pkgs) ];
   # Linux-only packages (unavailable/broken on x86_64-darwin)
   linuxOnly = lib.optionals pkgs.stdenv.isLinux (with pkgs; [
-    calicoctl nerdctl opencode goofys foundry emscripten devcontainer
+    calicoctl nerdctl opencode goofys foundry emscripten devcontainer xpra
   ]);
 in
 {
@@ -113,7 +113,6 @@ in
       vcluster
       wabt
       wasmtime
-      xpra
       yamllint
       yt-dlp            # youtube-dl is abandoned/insecure
       yq-go             # Go yq (brew yq)
