@@ -129,7 +129,56 @@ Conservative (keeps everything live):
 nix-collect-garbage                               # only removes unreachable store paths
 ```
 
-## 3) Day 2 ops
+## 3) Stage a package before adding it
+
+Try a candidate package against the **same nixpkgs revision** the flake pins,
+before touching `home.nix`. This catches missing/renamed attributes, build
+failures, and version mismatches early — without a speculative `switch` that
+leaves a broken generation you'd have to roll back.
+
+### a) Build/check the exact attr the flake would use
+
+```
+nix build .#homeConfigurations."jjo@linux".config.home.packages \
+  --apply 'xs: builtins.head (builtins.filter (p: p.pname == "<pkg>") xs)'
+```
+
+Fails fast if `<pkg>` isn't an attribute name nixpkgs recognises at the pinned
+rev. (Swap `.#jjo@linux` for `.#jjo@mac` when staging on macOS.)
+
+### b) Shell into it first (no profile mutation)
+
+```
+nix shell nixpkgs#<pkg>                              # ad-hoc, uses pinned nixpkgs
+nix run nixpkgs#<pkg>                                # run once, no install
+```
+
+`nixpkgs` here resolves through the flake lock, so this is the same version
+that `switch` would install — not whatever `nix profile` would pick.
+
+### c) Dry-run the real switch
+
+```
+home-manager build --flake .#jjo@linux               # builds into ./result, no activation
+nvd diff ~/.local/state/nix/profiles/home-manager ./result
+```
+
+`build` constructs the closure without swapping the generation. Inspect the diff
+(`nvd` or `nix store diff-closures`); if the closure looks wrong, just `rm
+./result` — nothing in your profile changed.
+
+### d) Only then, edit + switch
+
+```
+# add the line to home.nix (respect existing grouping)
+git add home.nix
+home-manager switch --flake .#jjo@linux
+```
+
+If the staged build in (a) or (c) failed, do **not** proceed to (d) — fix the
+attribute name or pin first.
+
+## 4) Day 2 ops
 
 ### a) See what's currently installed (declared vs actual)
 

@@ -113,6 +113,7 @@ in
       vcluster
       wabt
       wasmtime
+      xpra
       yamllint
       yt-dlp            # youtube-dl is abandoned/insecure
       yq-go             # Go yq (brew yq)
@@ -121,6 +122,7 @@ in
       zoxide
       kubernetes-helm
       gcx
+      mosh
     ]);
 
   home.stateVersion = "25.05";
