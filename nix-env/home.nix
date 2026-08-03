@@ -15,7 +15,6 @@ in
   programs.home-manager.enable = true;
   home.packages =
     linuxOnly
-    ++ maybe "herdr"
     ++ maybe "silver-searcher-ng"
     ++ (with pkgs; [
       # ── carried over from the original flake ──────────────────────────────
