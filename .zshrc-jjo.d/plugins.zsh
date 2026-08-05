@@ -5,6 +5,5 @@
 # git clone --depth 1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 # git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
 # git clone --depth 1 https://github.com/zpm-zsh/clipboard.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/clipboard
-#plugins=($plugins zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete clipboard)
-plugins=($plugins zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting clipboard)
+plugins+=(direnv starship zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting clipboard kubectl)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=2'
