@@ -121,6 +121,7 @@ in
       kubernetes-helm
       gcx
       mosh
+      qrcode
     ]);
 
   home.stateVersion = "25.05";

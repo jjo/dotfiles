@@ -11,5 +11,4 @@ if [ -z "${NIX_REMOTE:-}" ] && [ -S /nix/var/nix/daemon-socket/socket ]; then
   export NIX_REMOTE=daemon
 fi
 
-home-manager expire-generations "-30 days"
-nix-collect-garbage -d
+nix store optimise
