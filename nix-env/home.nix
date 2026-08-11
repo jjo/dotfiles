@@ -4,7 +4,7 @@ let
   maybe = name: lib.optionals (builtins.hasAttr name pkgs) [ (builtins.getAttr name pkgs) ];
   # Linux-only packages (unavailable/broken on x86_64-darwin)
   linuxOnly = lib.optionals pkgs.stdenv.isLinux (with pkgs; [
-    calicoctl nerdctl opencode goofys foundry emscripten devcontainer xpra
+    calicoctl nerdctl opencode goofys foundry emscripten devcontainer xpra pmbootstrap
   ]);
 in
 {
@@ -122,6 +122,7 @@ in
       gcx
       mosh
       qrcode
+      go-grip
     ]);
 
   home.stateVersion = "25.05";
